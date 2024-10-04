@@ -403,3 +403,24 @@ erDiagram
     DESPESAS ||--o{ PAGAMENTOS : paga
     RECEITAS ||--o{ RECEBIMENTOS : registra
 ```
+
+# Diagrama de Classes
+
+```mermaid
+    classDiagram
+    class usuario {
+        +int id_usuario
+        +string nome_usuario
+        +string email
+        +string senha_hash
+        +string role
+        +datetime created_at
+        +datetime updated_at
+        +get_nome_usuario()
+        +set_nome_usuario(string)
+        +get_role()
+        +set_role(string)
+        +get_email()
+        +set_email(string)
+    }
+```
