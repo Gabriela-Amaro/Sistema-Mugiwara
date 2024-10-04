@@ -409,18 +409,43 @@ erDiagram
 ```mermaid
     classDiagram
     class usuario {
-        +int id_usuario
-        +string nome_usuario
-        +string email
-        +string senha_hash
-        +string role
-        +datetime created_at
-        +datetime updated_at
+        -int id_usuario
+        -string nome_usuario
+        -string email
+        -string senha_hash
+        -string role
+        -datetime created_at
+        -datetime updated_at
         +get_nome_usuario()
-        +set_nome_usuario(string)
+        +set_nome_usuario(string nome)
         +get_role()
-        +set_role(string)
+        +set_role(string role)
         +get_email()
-        +set_email(string)
+        +set_email(string email)
+        +get_created_at()
+        +get_updated_at()
+    }
+
+    class fornecedores {
+        -int id_fornecedores
+        -string nome_fornecedor
+        -string cnpj
+        -string endereco
+        -string telefone
+        -string email
+        -datetime created_at
+        -datetime updated_at
+        +get_nome_fornedor()
+        +set_nome_fornedor(string nome)
+        +get_cnpj()
+        +set_cnpj(string cnpj)
+        +get_endereco()
+        +set_endereco(string endereco)
+        +get_telefone()
+        +set_telefone(string telefone)
+        +get_email()
+        +set_email(string email)
+        +get_created_at()
+        +get_updated_at()
     }
 ```
