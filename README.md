@@ -277,6 +277,15 @@ graph TD
 
 ```mermaid
 erDiagram
+    USUARIO {
+        int id_usuario PK
+        string nome_usuario
+        string senha_hash
+        string role
+        datetime created_at
+        datetime updated_at
+    }
+
     FORNECEDORES {
         int id_fornecedor PK
         string nome_fornecedor
