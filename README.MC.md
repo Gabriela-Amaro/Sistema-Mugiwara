@@ -7,6 +7,7 @@ erDiagram
     USUARIO {
         int id PK
         string nome
+        string email
         string senha_hash
         string role
         datetime created_at
