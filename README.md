@@ -278,8 +278,8 @@ graph TD
 ```mermaid
 erDiagram
     USUARIO {
-        int id_usuario PK
-        string nome_usuario
+        int id PK
+        string nome
         string senha_hash
         string role
         datetime created_at
@@ -287,8 +287,8 @@ erDiagram
     }
 
     FORNECEDORES {
-        int id_fornecedor PK
-        string nome_fornecedor
+        int id PK
+        string nome
         string cnpj
         string endereco
         string telefone
@@ -298,9 +298,9 @@ erDiagram
     }
     
     DESPESAS {
-        int id_despesa PK
+        int id PK
         string descricao
-        date data_despesa
+        date data
         decimal valor
         string categoria
         datetime created_at
@@ -309,11 +309,10 @@ erDiagram
     }
     
     PAGAMENTOS {
-        int id_pagamento PK
-        date data_pagamento
+        int id PK
+        date data
         decimal valor_pago
         string metodo_pagamento
-        boolean status_conciliacao
         datetime created_at
         datetime updated_at
         int id_despesa FK
@@ -321,8 +320,8 @@ erDiagram
     }
     
     CLIENTES {
-        int id_cliente PK
-        string nome_cliente
+        int id PK
+        string nome
         string cnpj_cpf
         string endereco
         string telefone
@@ -332,9 +331,9 @@ erDiagram
     }
     
     RECEITAS {
-        int id_receita PK
+        int id PK
         string descricao
-        date data_receita
+        date data
         decimal valor
         string categoria
         datetime created_at
@@ -343,11 +342,10 @@ erDiagram
     }
     
     RECEBIMENTOS {
-        int id_recebimento PK
-        date data_recebimento
+        int id PK
+        date data
         decimal valor_recebido
         string metodo_recebimento
-        boolean status_conciliacao
         datetime created_at
         datetime updated_at
         int id_receita FK
@@ -355,8 +353,8 @@ erDiagram
     }
     
     FLUXO_CAIXA {
-        int id_fluxo PK
-        date data_fluxo
+        int id PK
+        date data
         decimal saldo_inicial
         decimal saldo_final
         decimal projecao_entradas
@@ -366,8 +364,8 @@ erDiagram
     }
     
     RELATORIOS {
-        int id_relatorio PK
-        string tipo_relatorio
+        int id PK
+        string tipo
         date periodo_inicio
         date periodo_fim
         blob arquivo_pdf
@@ -377,7 +375,7 @@ erDiagram
     }
     
     CONTAS_BANCARIAS {
-        int id_conta_bancaria PK
+        int id PK
         string nome_banco
         string agencia
         string numero_conta
@@ -387,8 +385,8 @@ erDiagram
     }
     
     EXTRATOS_BANCARIOS {
-        int id_extrato PK
-        date data_extrato
+        int id PK
+        date data
         blob arquivo_extrato
         datetime created_at
         datetime updated_at
@@ -409,15 +407,15 @@ erDiagram
 ```mermaid
     classDiagram
     class usuario {
-        -int id_usuario
-        -string nome_usuario
+        -int id
+        -string nome
         -string email
         -string senha_hash
         -string role
         -datetime created_at
         -datetime updated_at
-        +get_nome_usuario()
-        +set_nome_usuario(string nome)
+        +get_nome()
+        +set_nome(string nome)
         +get_role()
         +set_role(string role)
         +get_email()
@@ -427,16 +425,16 @@ erDiagram
     }
 
     class fornecedores {
-        -int id_fornecedores
-        -string nome_fornecedor
+        -int id
+        -string nome
         -string cnpj
         -string endereco
         -string telefone
         -string email
         -datetime created_at
         -datetime updated_at
-        +get_nome_fornedor()
-        +set_nome_fornedor(string nome)
+        +get_nome()
+        +set_nome(string nome)
         +get_cnpj()
         +set_cnpj(string cnpj)
         +get_endereco()
