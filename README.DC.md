@@ -9,7 +9,7 @@
         -string nome
         -string email
         -string senha_hash
-        -string role
+        -int role
         -datetime created_at
         -datetime updated_at
         +__str__() string
@@ -30,28 +30,25 @@
     class Despesa {
         -int id
         -string descricao
-        -date data
+        -date data_vencimento
         -decimal valor
         -string categoria
         -datetime created_at
-        -datetime updated_at
         -int id_fornecedor
         +__str__() string
     }
 
     class Pagamento {
         -int id
-        -date data
         -decimal valor_pago
-        -string metodo_pagamento
+        -int metodo_pagamento
         -datetime created_at
-        -datetime updated_at
         -int id_despesa
         -int id_conta_bancaria
         +__str__() string
     }
 
-    class Cliente {
+    class Clientes {
         -int id
         -string nome
         -string cnpj_cpf
@@ -66,11 +63,10 @@
     class Receita {
         -int id
         -string descricao
-        -date data
+        -date data_vencimento
         -decimal valor
         -string categoria
         -datetime created_at
-        -datetime updated_at
         -int id_cliente
         +__str__() string
     }
@@ -81,9 +77,7 @@
         -decimal valor_recebido
         -string metodo_recebimento
         -datetime created_at
-        -datetime updated_at
         -int id_receita
-        -int id_conta_bancaria
         +__str__() string
     }
 
@@ -94,20 +88,16 @@
         -decimal saldo_final
         -decimal projecao_entradas
         -decimal projecao_saidas
-        -datetime created_at
-        -datetime updated_at
         +__str__() string
     }
 
     class Relatorio {
         -int id
-        -string tipo
+        -int tipo
         -date periodo_inicio
         -date periodo_fim
         -blob arquivo_pdf
-        -blob arquivo_excel
         -datetime created_at
-        -datetime updated_at
         +__str__() string
     }
 
@@ -124,10 +114,8 @@
 
     class ExtratoBancario {
         -int id
-        -date data
         -blob arquivo_extrato
         -datetime created_at
-        -datetime updated_at
         -int id_conta_bancaria
         +__str__() string
     }
