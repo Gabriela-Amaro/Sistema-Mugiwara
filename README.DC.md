@@ -48,7 +48,7 @@
         +__str__() string
     }
 
-    class Clientes {
+    class Cliente {
         -int id
         -string nome
         -string cnpj_cpf
