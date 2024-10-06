@@ -9,7 +9,7 @@ erDiagram
         string nome
         string email
         string senha_hash
-        string role
+        int role
         datetime created_at
         datetime updated_at
     }
@@ -32,17 +32,14 @@ erDiagram
         decimal valor
         string categoria
         datetime created_at
-        datetime updated_at
         int id_fornecedor FK
     }
     
     PAGAMENTOS {
         int id PK
-        date data
         decimal valor_pago
-        string metodo_pagamento
+        int metodo_pagamento
         datetime created_at
-        datetime updated_at
         int id_despesa FK
         int id_conta_bancaria FK
     }
@@ -65,7 +62,6 @@ erDiagram
         decimal valor
         string categoria
         datetime created_at
-        datetime updated_at
         int id_cliente FK
     }
     
@@ -75,9 +71,7 @@ erDiagram
         decimal valor_recebido
         string metodo_recebimento
         datetime created_at
-        datetime updated_at
         int id_receita FK
-        int id_conta_bancaria FK
     }
     
     FLUXO_CAIXA {
@@ -87,19 +81,15 @@ erDiagram
         decimal saldo_final
         decimal projecao_entradas
         decimal projecao_saidas
-        datetime created_at
-        datetime updated_at
     }
     
     RELATORIOS {
         int id PK
-        string tipo
+        int tipo
         date periodo_inicio
         date periodo_fim
         blob arquivo_pdf
-        blob arquivo_excel
         datetime created_at
-        datetime updated_at
     }
     
     CONTAS_BANCARIAS {
@@ -114,10 +104,8 @@ erDiagram
     
     EXTRATOS_BANCARIOS {
         int id PK
-        date data
         blob arquivo_extrato
         datetime created_at
-        datetime updated_at
         int id_conta_bancaria FK
     }
     
