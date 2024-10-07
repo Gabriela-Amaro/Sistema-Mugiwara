@@ -1,0 +1,14 @@
+<p>Saldo atual: R${{ saldo_atual }}</p>
+<p>total receita = {{ total_receita }}</p>
+<p>total despesa = {{ total_despesa }}</p>
+<ul>
+    <strong>receitas: </strong>
+    {% for receita in receitas %}
+        <li>{{ receita.created_at }} - {{ receita.cliente }} - {{ receita.valor }}</li>
+    {% endfor %}
+
+    <strong>despesas: </strong>
+    {% for despesa in despesas %}
+        <li>{{ despesa.created_at }} - {{ despesa.cliente }} - {{ despesa.valor }}</li>
+    {% endfor %}
+</ul>
