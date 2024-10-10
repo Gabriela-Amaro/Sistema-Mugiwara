@@ -1,0 +1,74 @@
+/* Estilo para o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Estilo para o menu de navegação */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+ul li a:hover {
+    color: #3498db;
+}
+
+/* Estilo para os parágrafos */
+p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+}
+
+/* Estilo para a lista de receitas e despesas */
+ul strong {
+    display: block;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #2c3e50;
+}
+
+li {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+li:nth-child(odd) {
+    background-color: #e8e8e8;
+    padding: 5px;
+}
+
+li:nth-child(even) {
+    background-color: #f9f9f9;
+    padding: 5px;
+}
+
+/* Estilo para o saldo atual */
+p.saldo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #27ae60;
+}
+
+p.despesa {
+    color: #e74c3c;
+}
+
+p.receita {
+    color: #2ecc71;
+}

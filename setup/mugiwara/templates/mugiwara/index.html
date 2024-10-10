@@ -1,14 +1,42 @@
-<p>Saldo atual: R${{ saldo_atual }}</p>
-<p>total receita = {{ total_receita }}</p>
-<p>total despesa = {{ total_despesa }}</p>
-<ul>
-    <strong>receitas: </strong>
-    {% for receita in receitas %}
-        <li>{{ receita.created_at }} - {{ receita.cliente }} - {{ receita.valor }}</li>
-    {% endfor %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Financeiro</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
 
-    <strong>despesas: </strong>
-    {% for despesa in despesas %}
-        <li>{{ despesa.created_at }} - {{ despesa.cliente }} - {{ despesa.valor }}</li>
-    {% endfor %}
-</ul>
+    <ul>
+        <li><a href="{% url 'index' %}">Página Inicial</a></li>
+        {% comment %} <li><a href="{% url 'relatorios' %}">Relatórios</a></li> {% endcomment %}
+        {% comment %} <li><a href="{% url 'busca' %}">Buscar</a></li> {% endcomment %}
+        {% comment %} <li><a href="{% url 'login' %}">Login</a></li> {% endcomment %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        
+    </ul>
+
+    <p class="saldo">Saldo atual: R${{ saldo_atual }}</p>
+    <p class="receita">Total receita: R${{ total_receita }}</p>
+    <p class="despesa">Total despesa: R${{ total_despesa }}</p>
+
+    <ul>
+        <strong>Receitas: </strong>
+        {% for receita in receitas %}
+            <ul>
+                <li>{{ receita.created_at }} - {{ receita.cliente }} - {{ receita.valor }}</li>
+            </ul>
+        {% endfor %}
+
+        <strong>Despesas: </strong>
+        {% for despesa in despesas %}
+            <ul>
+                <li>{{ despesa.created_at }} - {{ despesa.cliente }} - {{ despesa.valor }}</li>
+            </ul>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

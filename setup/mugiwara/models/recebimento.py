@@ -1,5 +1,6 @@
 from django.db import models
 from .receita import receita
+from .conta_bancaria import conta_bancaria
 
 class recebimento(models.Model):
     class  metodos_recebimento(models.IntegerChoices):
@@ -16,7 +17,12 @@ class recebimento(models.Model):
         receita,
         on_delete = models.CASCADE
     )
-
+    conta_bancaria_id = models.ForeignKey(
+        conta_bancaria,
+        on_delete = models.SET_NULL,
+        null = True,
+        blank = True
+    )
     class Meta:
         ordering = ['-created_at']
 
