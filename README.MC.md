@@ -7,20 +7,7 @@ erDiagram
     USUARIO {
         int id PK
         string nome
-        string email
         string senha_hash
-        int role
-        datetime created_at
-        datetime updated_at
-    }
-
-    FORNECEDORES {
-        int id PK
-        string nome
-        string cnpj
-        string endereco
-        string telefone
-        string email
         datetime created_at
         datetime updated_at
     }
@@ -32,7 +19,6 @@ erDiagram
         decimal valor
         string categoria
         datetime created_at
-        int id_fornecedor FK
     }
     
     PAGAMENTOS {
@@ -44,17 +30,6 @@ erDiagram
         int id_conta_bancaria FK
     }
     
-    CLIENTES {
-        int id PK
-        string nome
-        string cnpj_cpf
-        string endereco
-        string telefone
-        string email
-        datetime created_at
-        datetime updated_at
-    }
-    
     RECEITAS {
         int id PK
         string descricao
@@ -62,7 +37,6 @@ erDiagram
         decimal valor
         string categoria
         datetime created_at
-        int id_cliente FK
     }
     
     RECEBIMENTOS {
@@ -72,6 +46,7 @@ erDiagram
         string metodo_recebimento
         datetime created_at
         int id_receita FK
+        int id_conta_bancaria FK
     }
     
     FLUXO_CAIXA {
@@ -102,18 +77,8 @@ erDiagram
         datetime updated_at
     }
     
-    EXTRATOS_BANCARIOS {
-        int id PK
-        blob arquivo_extrato
-        datetime created_at
-        int id_conta_bancaria FK
-    }
-    
-    FORNECEDORES ||--o{ DESPESAS : fornece
-    CLIENTES ||--o{ RECEITAS : possui
     CONTAS_BANCARIAS ||--o{ PAGAMENTOS : realiza
     CONTAS_BANCARIAS ||--o{ RECEBIMENTOS : recebe
-    CONTAS_BANCARIAS ||--o{ EXTRATOS_BANCARIOS : gera
     DESPESAS ||--o{ PAGAMENTOS : paga
     RECEITAS ||--o{ RECEBIMENTOS : registra
 ```

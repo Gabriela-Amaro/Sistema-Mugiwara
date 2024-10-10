@@ -7,21 +7,7 @@
     class Usuario {
         -int id
         -string nome
-        -string email
         -string senha_hash
-        -int role
-        -datetime created_at
-        -datetime updated_at
-        +__str__() string
-    }
-
-    class Fornecedor {
-        -int id
-        -string nome
-        -string cnpj
-        -string endereco
-        -string telefone
-        -string email
         -datetime created_at
         -datetime updated_at
         +__str__() string
@@ -34,7 +20,6 @@
         -decimal valor
         -string categoria
         -datetime created_at
-        -int id_fornecedor
         +__str__() string
     }
 
@@ -48,18 +33,6 @@
         +__str__() string
     }
 
-    class Cliente {
-        -int id
-        -string nome
-        -string cnpj_cpf
-        -string endereco
-        -string telefone
-        -string email
-        -datetime created_at
-        -datetime updated_at
-        +__str__() string
-    }
-
     class Receita {
         -int id
         -string descricao
@@ -67,7 +40,6 @@
         -decimal valor
         -string categoria
         -datetime created_at
-        -int id_cliente
         +__str__() string
     }
 
@@ -78,6 +50,7 @@
         -string metodo_recebimento
         -datetime created_at
         -int id_receita
+        -int id_conta_bancaria
         +__str__() string
     }
 
@@ -112,19 +85,8 @@
        +__str__() string
     }
 
-    class ExtratoBancario {
-        -int id
-        -blob arquivo_extrato
-        -datetime created_at
-        -int id_conta_bancaria
-        +__str__() string
-    }
-
-    Fornecedor "1" --> "0..*" Despesa : fornece
-    Cliente "1" --> "0..*" Receita : possui
     ContaBancaria "1" --> "0..*" Pagamento : realiza
     ContaBancaria "1" --> "0..*" Recebimento : recebe
-    ContaBancaria "1" --> "0..*" ExtratoBancario : gera
     Despesa "1" --> "0..*" Pagamento : paga
     Receita "1" --> "1..*" Recebimento : registra
 ```
