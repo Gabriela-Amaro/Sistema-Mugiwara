@@ -56,77 +56,23 @@
 |Informações de saída: Pagamentos registrados, conciliação bancária.|
 |Requisitos não funcionais: Segurança na integração bancária, velocidade na conciliação.|
 
-|RF7. Visão Geral do Fluxo de Caixa|
-|-----------------------|
-|Descrição: Exibir um resumo em tempo real das entradas e saídas de caixa.|
-|Fontes: Registros de contas a pagar e a receber.|
-|Usuários: Administradores, gestores financeiros.|Precisão nos cálculos, interface amigável.
-|Informações de entrada: Dados financeiros consolidados (entradas e saídas).|
-|Informações de saída: Resumo financeiro com gráficos e tabelas.|
-|Requisitos não funcionais: Visualização clara, geração rápida dos dados.|
-
 |RF8. Projeção de Fluxo de Caixa|
 |-----------------------|
 |Descrição: Permitir a criação de previsões de fluxo de caixa baseadas em lançamentos futuros.|
-|Fontes: Planejamentos financeiros, contratos futuros|
-|Usuários: Gestores financeiros, administradores.|
-|Informações de entrada: Lançamentos futuros de receitas e despesas.|
+|Fontes: receitas e despesas futuras|
+|Usuários: funcionarios, administradores.|
+|Informações de entrada: Lançamentos futuros de receitas e despesas, e data futura.|
 |Informações de saída: Projeção detalhada de entradas e saídas futuras.|
 |Requisitos não funcionais: Precisão nos cálculos, interface amigável.|
-
-|RF9. Geração de Relatórios|
-|-----------------------|
-|Descrição: Gerar relatórios financeiros, como balanços patrimoniais e análises de fluxo de caixa.|
-|Fontes: Dados de receitas, despesas e balanço contábil.|
-|Usuários: Gestores financeiros, administradores, auditores.|
-|Informações de entrada: Período do relatório, tipos de relatório.|
-|Informações de saída: Relatórios financeiros completos.|
-|Requisitos não funcionais: Formatação padrão de relatórios, facilidade de leitura.|
-
-|RF10. Exportação de relatórios|
-|-----------------------|
-|Descrição: Oferecer a opção de exportar relatórios em formatos como PDF e Excel.|
-|Fontes:  Dados financeiros consolidados.|
-|Usuários: Administradores, gestores financeiros.|
-|Informações de entrada: Seleção de formato de exportação, período.|
-|Informações de saída: Relatório exportado em formato escolhido.|
-|Requisitos não funcionais: Exportação rápida.|
-
-|RF11. Geração Automática de Relatórios|
-|-----------------------|
-|Descrição: Automatizar a criação de relatórios financeiros com base em intervalos de tempo predefinidos.|
-|Fontes: Registros financeiros, fluxo de caixa.|
-|Usuários: Gestores financeiros, administradores.|
-|Informações de entrada: Parâmetros de relatórios (frequência, tipo).|
-|Informações de saída: Relatórios gerados automaticamente.|
-|Requisitos não funcionais: Automação confiável, baixo consumo de recursos.|
-
-|RF12. Conciliação Bancária|
-|-----------------------|
-|Descrição: Automatizar a conciliação de extratos bancários com os lançamentos financeiros do sistema.|
-|Fontes: Bancos, registros financeiros.|
-|Usuários: Funcionários do setor financeiro, administradores.|
-|Informações de entrada: Extratos bancários, lançamentos no sistema.|
-|Informações de saída: Lançamentos conciliados automaticamente.|
-|Requisitos não funcionais: Alta precisão, segurança na integração bancária.|
 
 |RF13. Pagamentos Eletrônicos|
 |-----------------------|
 |Descrição: Facilitar a realização de pagamentos eletrônicos diretamente pelo sistema.|
-|Fontes: Contas a pagar, fornecedores.|
-|Usuários: Funcionários do setor financeiro, administradores.|
-|Informações de entrada: Dados de pagamento (valor, conta bancária).|
-|Informações de saída: Confirmação de pagamento eletrônico.|
-|Requisitos não funcionais: Alta segurança nas transações, conformidade com regulamentações bancárias.|
-
-|RF14. Importação de Extratos|
-|-----------------------|
-|Descrição: Integrar com sistemas bancários para importar extratos automaticamente.|
-|Fontes: Bancos.|
-|Usuários: Funcionários do setor financeiro, administradores.|
-|Informações de entrada: Credenciais bancárias, período de extrato.|
-|Informações de saída: Extratos bancários importados.|
-|Requisitos não funcionais: Alta disponibilidade da integração, compatibilidade com múltiplos bancos.|
+|Fontes: Contas a pagar.|
+|Usuários: Funcionários, administradores.|
+|Informações de entrada: Dados de pagamento (valor, conta bancária(drop down das contas bancarias existentes typedchoice).|
+|Informações de saída: Confirmação de pagamento eletrônico, se o valor for menor ou igual ao saldo.|
+|Requisitos não funcionais: |
 
 |RF15. Registro de Recebimentos e Pagamentos|
 |-----------------------|
