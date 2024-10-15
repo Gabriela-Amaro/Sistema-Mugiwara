@@ -98,7 +98,7 @@ def createContaBancariaView(request):
     context = {
         "form": form
     }
-    return render(request, 'mugiwara/create_conta_bancaria.html', context)
+    return render(request, 'mugiwara/conta_bancaria.html', context)
 
 def showContaBancariaView(request):
     contas = conta_bancaria.objects.all()
@@ -118,7 +118,7 @@ def updateContaBancariaView(request, c_id):
     context = {
         'form': form
     }
-    return render(request, 'mugiwara/create_conta_bancaria.html', context) 
+    return render(request, 'mugiwara/conta_bancaria.html', context) 
 
 def deleteContaBancariaView(request, c_id):
     conta = conta_bancaria.objects.get(id=c_id)
@@ -142,7 +142,7 @@ def createDespesaView(request):
         'form': form
     }
 
-    return render(request, 'mugiwara/create_despesa.html', context)
+    return render(request, 'mugiwara/despesa.html', context)
 
 def showDespesaView(request):
     despesas = despesa.objects.all()
@@ -162,7 +162,7 @@ def updateDespesaView(request, c_id):
     context = {
         'form': form
     }
-    return render(request, 'mugiwara/create_despesa.html', context) 
+    return render(request, 'mugiwara/despesa.html', context) 
 
 def deleteDespesaView(request, c_id):
     desp = despesa.objects.get(id=c_id)

@@ -26,10 +26,10 @@
             <td>{{receita.status}}</td>
             <td>{{receita.valor}}</td>
             <td>{{receita.created_at}}</td>
-            {% comment %} <td>
-                <button class="btn btn-warning"><a href="{% url 'create_conta_bancaria' conta.id %}">Update</a></button>&nbsp;&nbsp;
-                <button class="btn btn-danger"><a href="{% url 'delete_conta_bancaria' conta.id %}">Delete</a></button>
-            </td> {% endcomment %}
+            <td>
+                <button class="btn btn-warning"><a href="{% url 'receita' receita.id %}">Update</a></button>&nbsp;&nbsp;
+                <button class="btn btn-danger"><a href="{% url 'delete_receita' receita.id %}">Delete</a></button>
+            </td>
         </tr>
         {% endfor %}
         </tbody>
@@ -55,10 +55,10 @@
             <td>{{despesa.status}}</td>
             <td>{{despesa.valor}}</td>
             <td>{{despesa.created_at}}</td>
-            {% comment %} <td>
-                <button class="btn btn-warning"><a href="{% url 'create_conta_bancaria' despesa.id %}">Update</a></button>&nbsp;&nbsp;
-                <button class="btn btn-danger"><a href="{% url 'delete_conta_bancaria' despesa.id %}">Delete</a></button>
-            </td> {% endcomment %}
+            <td>
+                <button class="btn btn-warning"><a href="{% url 'despesa' despesa.id %}">Update</a></button>&nbsp;&nbsp;
+                <button class="btn btn-danger"><a href="{% url 'delete_despesa' despesa.id %}">Delete</a></button>
+            </td>
         </tr>
         {% endfor %}
         </tbody>

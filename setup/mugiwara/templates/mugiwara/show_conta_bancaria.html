@@ -7,7 +7,7 @@
 {% block content %}
 <div class="container">
 <h1 class="text-center mt-3 mb-3">Contas</h1>
-<button><a href="{% url 'create_conta_bancaria' %}">Criar</a></button>
+<button><a href="{% url 'conta_bancaria' %}">Criar</a></button>
 <table class="table table-bordered">
    <thead>
      <tr>
@@ -26,7 +26,7 @@
        <td>{{conta.saldo_atual}}</td>
        <td>{{conta.created_at}}</td>
        <td>
-           <button class="btn btn-warning"><a href="{% url 'create_conta_bancaria' conta.id %}">Update</a></button>&nbsp;&nbsp;
+           <button class="btn btn-warning"><a href="{% url 'conta_bancaria' conta.id %}">Update</a></button>&nbsp;&nbsp;
            <button class="btn btn-danger"><a href="{% url 'delete_conta_bancaria' conta.id %}">Delete</a></button>
        </td>
      </tr>

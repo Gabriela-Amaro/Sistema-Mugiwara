@@ -7,7 +7,7 @@
 {% block content %}
 <div class="container">
 <h1 class="text-center mt-3 mb-3">Despesas</h1>
-<button><a href="{% url 'create_despesa' %}">Criar</a></button>
+<button><a href="{% url 'despesa' %}">Criar</a></button>
 <table class="table table-bordered">
    <thead>
      <tr>
@@ -32,7 +32,7 @@
        <td>{{despesa.status}}</td>
        <td>{{despesa.created_at}}</td>
        <td>
-           <button class="btn btn-warning"><a href="{% url 'create_despesa' despesa.id %}">Update</a></button>&nbsp;&nbsp;
+           <button class="btn btn-warning"><a href="{% url 'despesa' despesa.id %}">Update</a></button>&nbsp;&nbsp;
            <button class="btn btn-danger"><a href="{% url 'delete_despesa' despesa.id %}">Delete</a></button>
        </td>
      </tr>
