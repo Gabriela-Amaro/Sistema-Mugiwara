@@ -22,7 +22,7 @@ class despesa(models.Model):
         choices = status_choices,
         default = status_choices.ABERTO
     )
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, auto_created=True)
 
     class Meta:
         ordering = ['-created_at']

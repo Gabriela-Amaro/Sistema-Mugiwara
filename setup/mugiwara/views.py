@@ -1,11 +1,51 @@
 from django.shortcuts import render, redirect
 from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from django.views import View
 from .models import conta_bancaria, despesa, receita
-from .forms import UserCreationForm
+from .forms import UserCreationForm, ContaBancariaForm, DespesaForm
+
+# def createTodoView(request):
+#     form = TodoForm
+#     if request.method == "POST":
+#         form = TodoForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect("show_url")
+#     template_name = "todoapp/todo.html"
+#     context = {"form": form}
+#     return render(request, template_name, context)
+
+# def showTodoView(request):
+#     obj = Todo.objects.all()
+#     template_name = "todoapp/show.html"
+#     context = {"obj": obj}
+#     return render(request, template_name, context)
+
+# def updateTodoView(request, f_id):
+#     obj = Todo.objects.get(id=f_id)
+#     form = TodoForm(instance=obj)
+#     if request.method == "POST":
+#         form = TodoForm(request.POST, instance=obj)
+#         if form.is_valid():
+#             form.save()
+#             return redirect("show_url")
+#     template_name = "todoapp/todo.html"
+#     context = {"form": form}
+#     return render(request, template_name, context)
+
+# def deleteTodoView(request, f_id):
+#     obj = Todo.objects.get(id = f_id)
+#     if request.method == "POST":
+#         obj.delete()
+#         return redirect("show_url")
+#     template_name = "todoapp/confirmation.html"
+#     context = {"obj": obj}
+#     return render(request, template_name, context)
+
+# --------------------------------------------------
 
 
 @login_required
@@ -48,22 +88,104 @@ def userLogout(request):
     logout(request)  # Faz o logout do usuário
     return redirect('login')  # Redireciona para a página de login
 
-@login_required
-def contas_pagar(request):
-    return render(request, "mugiwara/")
+def createContaBancariaView(request):
+    form = ContaBancariaForm
+    if request.method == "POST":
+        form = ContaBancariaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("show_conta_bancaria")
+    context = {
+        "form": form
+    }
+    return render(request, 'mugiwara/create_conta_bancaria.html', context)
 
-@login_required
-def contas_receber(request):
-    return render(request, "mugiwara/")
+def showContaBancariaView(request):
+    contas = conta_bancaria.objects.all()
+    context = {
+        'contas': contas
+    }
+    return render(request, 'mugiwara/show_conta_bancaria.html', context)
 
-@login_required
-def fluxo_caixa(request):
-    return render(request, "mugiwara/")
+def updateContaBancariaView(request, c_id):
+    conta = conta_bancaria.objects.get(id=c_id)
+    form = ContaBancariaForm(instance=conta)
+    if request.method == 'POST':
+        form = ContaBancariaForm(request.POST, instance=conta)
+        if form.is_valid():
+            form.save()
+            return redirect('show_conta_bancaria')
+    context = {
+        'form': form
+    }
+    return render(request, 'mugiwara/create_conta_bancaria.html', context) 
 
-@login_required
-def relatorios(request):
-    return render(request, "mugiwara/")
+def deleteContaBancariaView(request, c_id):
+    conta = conta_bancaria.objects.get(id=c_id)
+    if request.method == 'POST':
+        conta.delete()
+        return redirect('show_conta_bancaria')
+    context = {
+        'conta': conta
+    }
+    return render(request, 'mugiwara/delete_conta_bancaria.html', context)
 
-@login_required
-def busca(request):
-    return render(request, "mugiwara/")
+def createDespesaView(request):
+    form = DespesaForm
+    if request.method == 'POST':
+        form = DespesaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('show_despesa')
+    
+    context = {
+        'form': form
+    }
+
+    return render(request, 'mugiwara/create_despesa.html', context)
+
+def showDespesaView(request):
+    despesas = despesa.objects.all()
+    context = {
+        'despesas': despesas
+    }
+    return render(request, 'mugiwara/show_despesa.html', context)
+
+def updateDespesaView(request, c_id):
+    despesas = despesa.objects.get(id=c_id)
+    form = DespesaForm(instance=despesas)
+    if request.method == 'POST':
+        form = DespesaForm(request.POST, instance=despesas)
+        if form.is_valid():
+            form.save()
+            return redirect('show_despesa')
+    context = {
+        'form': form
+    }
+    return render(request, 'mugiwara/create_despesa.html', context) 
+
+def deleteDespesaView(request, c_id):
+    desp = despesa.objects.get(id=c_id)
+    if request.method == 'POST':
+        desp.delete()
+        return redirect('show_despesa')
+    context = {
+        'despesa': desp
+    }
+    return render(request, 'mugiwara/delete_despesa.html', context)
+
+# @login_required
+# def contasReceber(request):
+#     return render(request, "mugiwara/")
+
+# @login_required
+# def fluxo_caixa(request):
+#     return render(request, "mugiwara/")
+
+# @login_required
+# def relatorios(request):
+#     return render(request, "mugiwara/")
+
+# @login_required
+# def busca(request):
+#     return render(request, "mugiwara/")

@@ -1,42 +1,67 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'layout.html' %} 
+{% load crispy_forms_tags %}
+
+{% block title %}
     <title>Sistema Financeiro</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-
-    <ul>
-        <li><a href="{% url 'index' %}">Página Inicial</a></li>
-        {% comment %} <li><a href="{% url 'relatorios' %}">Relatórios</a></li> {% endcomment %}
-        {% comment %} <li><a href="{% url 'busca' %}">Buscar</a></li> {% endcomment %}
-        {% comment %} <li><a href="{% url 'login' %}">Login</a></li> {% endcomment %}
-        <li><a href="{% url 'logout' %}">Logout</a></li>
-        
-    </ul>
-
-    <p class="saldo">Saldo atual: R${{ saldo_atual }}</p>
-    <p class="receita">Total receita: R${{ total_receita }}</p>
-    <p class="despesa">Total despesa: R${{ total_despesa }}</p>
-
-    <ul>
+{% endblock %}
+{% block content %}
+<div class='container'>
+    <table class="table table-bordered">
         <strong>Receitas: </strong>
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Status</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Data</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
         {% for receita in receitas %}
-            <ul>
-                <li>{{ receita.created_at }} - {{ receita.cliente }} - {{ receita.valor }}</li>
-            </ul>
+        <tr>
+            <td>{{receita.id}}</td>
+            <td>{{receita.categoria}}</td>
+            <td>{{receita.status}}</td>
+            <td>{{receita.valor}}</td>
+            <td>{{receita.created_at}}</td>
+            {% comment %} <td>
+                <button class="btn btn-warning"><a href="{% url 'create_conta_bancaria' conta.id %}">Update</a></button>&nbsp;&nbsp;
+                <button class="btn btn-danger"><a href="{% url 'delete_conta_bancaria' conta.id %}">Delete</a></button>
+            </td> {% endcomment %}
+        </tr>
         {% endfor %}
+        </tbody>
+    </table>
 
+    <table class="table table-bordered">
         <strong>Despesas: </strong>
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Status</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Data</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
         {% for despesa in despesas %}
-            <ul>
-                <li>{{ despesa.created_at }} - {{ despesa.cliente }} - {{ despesa.valor }}</li>
-            </ul>
+        <tr>
+            <td>{{despesa.id}}</td>
+            <td>{{despesa.categoria}}</td>
+            <td>{{despesa.status}}</td>
+            <td>{{despesa.valor}}</td>
+            <td>{{despesa.created_at}}</td>
+            {% comment %} <td>
+                <button class="btn btn-warning"><a href="{% url 'create_conta_bancaria' despesa.id %}">Update</a></button>&nbsp;&nbsp;
+                <button class="btn btn-danger"><a href="{% url 'delete_conta_bancaria' despesa.id %}">Delete</a></button>
+            </td> {% endcomment %}
+        </tr>
         {% endfor %}
-    </ul>
-
-</body>
-</html>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
