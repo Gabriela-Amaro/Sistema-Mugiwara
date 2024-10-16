@@ -17,4 +17,10 @@ urlpatterns = [
     path('despesa/<int:c_id>', views.updateDespesaView, name='despesa'),
     path('delete_despesa/<int:c_id>', views.deleteDespesaView, name='delete_despesa'),
     path('show_despesa/', views.showDespesaView, name='show_despesa'),
+
+    path('fluxo_caixa/', views.createFluxoCaixaView, name='fluxo_caixa'),
+    path('delete_fluxo_caixa/<int:f_id>', views.deleteFluxoCaixaView, name='delete_fluxo_caixa'),
+    path('show_fluxo_caixa/', views.showFluxoCaixaView, name='show_fluxo_caixa'),
+    path('show_fluxo_caixa_one/<int:f_id>', views.showFluxoCaixaOneView, name='show_fluxo_caixa_one'),
+
 ]

@@ -27,9 +27,9 @@
        <td>{{despesa.id}}</td>
        <td>{{despesa.data_vencimento}}</td>
        <td>{{despesa.valor}}</td>
-       <td>{{despesa.categoria}}</td>
+       <td>{{despesa.get_categoria_display}}</td>
        <td>{{despesa.descricao}}</td>
-       <td>{{despesa.status}}</td>
+       <td>{{despesa.get_status_display}}</td>
        <td>{{despesa.created_at}}</td>
        <td>
            <button class="btn btn-warning"><a href="{% url 'despesa' despesa.id %}">Update</a></button>&nbsp;&nbsp;

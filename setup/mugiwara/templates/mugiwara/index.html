@@ -18,20 +18,20 @@
                 <th scope="col">Actions</th>
             </tr>
         </thead>
-        <tbody>
-        {% for receita in receitas %}
-        <tr>
-            <td>{{receita.id}}</td>
-            <td>{{receita.categoria}}</td>
-            <td>{{receita.status}}</td>
-            <td>{{receita.valor}}</td>
-            <td>{{receita.created_at}}</td>
-            <td>
-                <button class="btn btn-warning"><a href="{% url 'receita' receita.id %}">Update</a></button>&nbsp;&nbsp;
-                <button class="btn btn-danger"><a href="{% url 'delete_receita' receita.id %}">Delete</a></button>
-            </td>
-        </tr>
-        {% endfor %}
+        <tbody> 
+            {% for receita in receitas %}
+                <tr>
+                    <td>{{receita.id}}</td>
+                    <td>{{receita.get_categoria_display}}</td>
+                    <td>{{receita.get_status_display}}</td>
+                    <td>{{receita.valor}}</td>
+                    <td>{{receita.created_at}}</td>
+                    <td>
+                        {% comment %} <button class="btn btn-warning"><a href="{% url 'receita' receita.id %}">Update</a></button>&nbsp;&nbsp;
+                        <button class="btn btn-danger"><a href="{% url 'delete_receita' receita.id %}">Delete</a></button> {% endcomment %}
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
@@ -51,8 +51,8 @@
         {% for despesa in despesas %}
         <tr>
             <td>{{despesa.id}}</td>
-            <td>{{despesa.categoria}}</td>
-            <td>{{despesa.status}}</td>
+            <td>{{despesa.get_categoria_display}}</td>
+            <td>{{despesa.get_status_display}}</td>
             <td>{{despesa.valor}}</td>
             <td>{{despesa.created_at}}</td>
             <td>

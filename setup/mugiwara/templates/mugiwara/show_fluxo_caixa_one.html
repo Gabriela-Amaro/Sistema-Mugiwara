@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+   <title>Fluxo de Caixa</title>
+{% endblock %}
+
+{% block content %}
+<div class='container'>
+  <h1 class="text-center mt-3 mb-3">Fluxo de Caixa</h1>
+  <p>De: {{fluxo_caixa.data_inicial}}<br>À: {{fluxo_caixa.data_final}}</p>
+  <p>Total de Saídas: {{total_despesas}}<br>Total de Entradas: {{total_receitas}}</p>
+
+  <table class="table table-bordered">
+      <strong>Receitas: </strong>
+      <thead>
+          <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Status</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Data de Vencimento</th>
+              <th scope="col">Criado em</th>
+          </tr>
+      </thead>
+      <tbody> 
+          {% for receita in receitas %}
+              <tr>
+                  <td>{{receita.id}}</td>
+                  <td>{{receita.get_categoria_display}}</td>
+                  <td>{{receita.descricao}}</td>
+                  <td>{{receita.get_status_display}}</td>
+                  <td>{{receita.valor}}</td>
+                  <td>{{receita.data_vencimento}}</td>
+                  <td>{{receita.created_at}}</td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+
+  <table class="table table-bordered">
+      <strong>Despesas: </strong>
+      <thead>
+          <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Status</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Data de Vencimento</th>
+              <th scope="col">Criado em</th>
+          </tr>
+      </thead>
+      <tbody>
+      {% for despesa in despesas %}
+      <tr>
+          <td>{{despesa.id}}</td>
+          <td>{{despesa.get_categoria_display}}</td>
+          <td>{{despesa.descricao}}</td>
+          <td>{{despesa.get_status_display}}</td>
+          <td>{{despesa.valor}}</td>
+          <td>{{despesa.data_vencimento}}</td>
+          <td>{{despesa.created_at}}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+  </table>
+</div>
+{% endblock %}

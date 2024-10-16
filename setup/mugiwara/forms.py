@@ -1,5 +1,5 @@
 from django import forms
-from .models import conta_bancaria, despesa
+from .models import conta_bancaria, despesa, fluxo_caixa
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -68,7 +68,8 @@ class DespesaForm(forms.ModelForm):
                 'maxlenght': '254'
             }),
             'data_vencimento': forms.DateInput(attrs={
-                'placeholder': 'dd/mm/YY',
+                'type': 'date',
+                'placeholder': 'dd/mm/YYYY',
                 'required': 'true'
             }),
             'valor': forms.NumberInput(attrs={
@@ -83,48 +84,28 @@ class DespesaForm(forms.ModelForm):
             }) 
         }
 
-        
+class FluxoCaixaForm(forms.ModelForm):
+    class Meta:
+        model = fluxo_caixa
+        fields = 'data_inicial', 'data_final'
 
-# class FluxoDeCaixaForm(forms.ModelForm):
-#     class Meta:
-#         model = despesa
-#         fields = 'categoria', 'descricao', 'data_vencimento', 'valor', 'status'
+        label = {
+            'data_inicial': 'De',
+            'data_final': 'À'
+        }
 
-#         label = {
-#             'categoria': 'Categoria',
-#             'descricao': 'Descrição',
-#             'data_vencimento': 'Vencimento',
-#             'valor': 'Valor',
-#             'status': 'Status'
-#         }
-
-#         widgets = {
-#             'categoria': forms.Select(attrs={
-#                 'class': 'form-select',
-#                 'id': 'categoria_despesa',
-#                 'placeholder': 'Selecione a categoria',
-#                 'required': 'true'
-#             }),
-#             'descricao': forms.TextInput(attrs={
-#                 'placeholder': 'Descrição...',
-#                 'required': 'true',
-#                 'maxlenght': '254'
-#             }),
-#             'data_vencimento': forms.DateInput(attrs={
-#                 'placeholder': 'dd/mm/YY',
-#                 'required': 'true'
-#             }),
-#             'valor': forms.NumberInput(attrs={
-#                 'placeholder': '0,00',
-#                 'required': 'true',
-#                 'maxlenght': '12'
-#             }),
-#             'status': forms.Select(attrs={
-#                 'class': 'form-select',
-#                 'id': 'status-despesa',
-#                 'required': 'true',
-#             }) 
-#         }
+        widgets = {
+            'data_inicial': forms.DateInput(attrs={
+                'type': 'date',
+                'placeholder': 'dd/mm/YYYY',
+                'required': 'true'
+            }),
+            'data_final': forms.DateInput(attrs={
+                'type': 'date',
+                'placeholder': 'dd/mm/YYYY',
+                'required': 'true'
+            })
+        }
 
 
 # class FluxoCaixaAtualForm(forms.Form):

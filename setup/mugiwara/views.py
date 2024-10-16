@@ -4,8 +4,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from django.views import View
-from .models import conta_bancaria, despesa, receita
-from .forms import UserCreationForm, ContaBancariaForm, DespesaForm
+from .models import conta_bancaria, despesa, receita, fluxo_caixa
+from .forms import UserCreationForm, ContaBancariaForm, DespesaForm, FluxoCaixaForm
+from decimal import Decimal
+
+import datetime
 
 # def createTodoView(request):
 #     form = TodoForm
@@ -88,6 +91,7 @@ def userLogout(request):
     logout(request)  # Faz o logout do usuário
     return redirect('login')  # Redireciona para a página de login
 
+# @login_required
 def createContaBancariaView(request):
     form = ContaBancariaForm
     if request.method == "POST":
@@ -100,6 +104,7 @@ def createContaBancariaView(request):
     }
     return render(request, 'mugiwara/conta_bancaria.html', context)
 
+# @login_required
 def showContaBancariaView(request):
     contas = conta_bancaria.objects.all()
     context = {
@@ -107,6 +112,7 @@ def showContaBancariaView(request):
     }
     return render(request, 'mugiwara/show_conta_bancaria.html', context)
 
+# @login_required
 def updateContaBancariaView(request, c_id):
     conta = conta_bancaria.objects.get(id=c_id)
     form = ContaBancariaForm(instance=conta)
@@ -120,6 +126,7 @@ def updateContaBancariaView(request, c_id):
     }
     return render(request, 'mugiwara/conta_bancaria.html', context) 
 
+# @login_required
 def deleteContaBancariaView(request, c_id):
     conta = conta_bancaria.objects.get(id=c_id)
     if request.method == 'POST':
@@ -130,6 +137,7 @@ def deleteContaBancariaView(request, c_id):
     }
     return render(request, 'mugiwara/delete_conta_bancaria.html', context)
 
+# @login_required
 def createDespesaView(request):
     form = DespesaForm
     if request.method == 'POST':
@@ -144,6 +152,7 @@ def createDespesaView(request):
 
     return render(request, 'mugiwara/despesa.html', context)
 
+# @login_required
 def showDespesaView(request):
     despesas = despesa.objects.all()
     context = {
@@ -151,6 +160,7 @@ def showDespesaView(request):
     }
     return render(request, 'mugiwara/show_despesa.html', context)
 
+# @login_required
 def updateDespesaView(request, c_id):
     despesas = despesa.objects.get(id=c_id)
     form = DespesaForm(instance=despesas)
@@ -164,6 +174,7 @@ def updateDespesaView(request, c_id):
     }
     return render(request, 'mugiwara/despesa.html', context) 
 
+# @login_required
 def deleteDespesaView(request, c_id):
     desp = despesa.objects.get(id=c_id)
     if request.method == 'POST':
@@ -173,6 +184,59 @@ def deleteDespesaView(request, c_id):
         'despesa': desp
     }
     return render(request, 'mugiwara/delete_despesa.html', context)
+
+# @login_required
+def createFluxoCaixaView(request):
+    form = FluxoCaixaForm
+    if request.method == 'POST':
+        form = FluxoCaixaForm(request.POST)
+        if form.is_valid():
+            
+            form.save()
+            return redirect('show_fluxo_caixa')
+    
+    context = {
+        'form': form
+    }
+
+    return render(request, 'mugiwara/fluxo_caixa.html', context)
+
+# @login_required
+def showFluxoCaixaView(request):
+    fluxo_caixas = fluxo_caixa.objects.all()
+    context = {
+        'fluxo_caixas': fluxo_caixas
+    }
+    return render(request, 'mugiwara/show_fluxo_caixa.html', context)
+
+def showFluxoCaixaOneView(request, f_id):
+    fluxo_caixas = fluxo_caixa.objects.get(id=f_id)
+    data_inicio = fluxo_caixas.data_inicial - datetime.timedelta(days=1)
+    data_fim = fluxo_caixas.data_final + datetime.timedelta(days=1)
+    despesas = despesa.objects.filter(created_at__range=[data_inicio, data_fim])
+    receitas = receita.objects.filter(created_at__range=[data_inicio, data_fim])
+    total_receitas = Decimal(receitas.aggregate(total_receitas=Sum('valor'))['total_receitas'])
+    total_despesas = Decimal(despesas.aggregate(total_despesas=Sum('valor'))['total_despesas']) 
+
+    context = {
+        'total_receitas': total_receitas,
+        'total_despesas': total_despesas,
+        'receitas': receitas,
+        'despesas': despesas,
+        'fluxo_caixa': fluxo_caixas
+    }
+    return render(request, 'mugiwara/show_fluxo_caixa_one.html', context)
+
+def deleteFluxoCaixaView(request, f_id):
+    fluxo = fluxo_caixa.objects.get(id=f_id)
+    if request.method == 'POST':
+        fluxo.delete()
+        return redirect('show_fluxo_caixa')
+    context = {
+        'fluxo': fluxo
+    }
+    return render(request, 'mugiwara/delete_fluxo_caixa.html', context)
+
 
 # @login_required
 # def contasReceber(request):
