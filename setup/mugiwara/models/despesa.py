@@ -1,15 +1,16 @@
 from django.db import models
 
-class despesa(models.Model):
-    class status_choices(models.IntegerChoices):
-        ABERTO = 1, "Em Aberto"
-        PAGO = 2, "Pago"
+class status_choices(models.IntegerChoices):
+    ABERTO = 1, "Em Aberto"
+    PAGO = 2, "Pago"
 
-    class categoria_choices(models.IntegerChoices):
-        C1 = 1, "Categoria 1"
-        C2 = 2, "Categoria 2"
-        C3 = 3, "Categoria 3"
-        C4 = 4, "Categoria 4"
+class categoria_choices(models.IntegerChoices):
+    C1 = 1, "Categoria 1"
+    C2 = 2, "Categoria 2"
+    C3 = 3, "Categoria 3"
+    C4 = 4, "Categoria 4"
+    
+class despesa(models.Model):
 
     descricao = models.TextField()
     data_vencimento = models.DateField(auto_now=False, auto_now_add=False)

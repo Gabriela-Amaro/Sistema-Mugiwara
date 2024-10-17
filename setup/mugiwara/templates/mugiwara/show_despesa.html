@@ -6,40 +6,94 @@
 
 {% block content %}
 <div class="container">
-<h1 class="text-center mt-3 mb-3">Despesas</h1>
-<button><a href="{% url 'despesa' %}">Criar</a></button>
-<table class="table table-bordered">
-   <thead>
-     <tr>
-       <th scope="col">ID</th>
-       <th scope="col">Vencimento</th>
-       <th scope="col">Valor</th>
-       <th scope="col">Categoria</th>
-       <th scope="col">Descrição</th>
-       <th scope="col">Status</th>
-       <th scope="col">Data de criação</th>
-       <th scope="col">Actions</th>
-     </tr>
-   </thead>
-   <tbody>
-   {% for despesa in despesas %}
-     <tr>
-       <td>{{despesa.id}}</td>
-       <td>{{despesa.data_vencimento}}</td>
-       <td>{{despesa.valor}}</td>
-       <td>{{despesa.get_categoria_display}}</td>
-       <td>{{despesa.descricao}}</td>
-       <td>{{despesa.get_status_display}}</td>
-       <td>{{despesa.created_at}}</td>
-       <td>
-          {% if despesa.status == 1 %}
-            <button class="btn"><a href="{% url 'pagamento' despesa.id %}">Pagar</a></button>
-          {% endif %}
-           <button class="btn btn-danger"><a href="{% url 'delete_despesa' despesa.id %}">Delete</a></button>
-       </td>
-     </tr>
-   {% endfor %}
-   </tbody>
- </table>
+  <h1 class="text-center mt-3 mb-3">Despesas</h1>
+
+  {% comment %} formulário de busca {% endcomment %}
+  <form method="GET" action="" class="row g-3 mb-4 p-3 border rounded bg-light">
+    <div class="col-md-12">
+        <div class="form-group">
+            {{ form.query.label_tag }}
+            {{ form.query }}
+        </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        {{ form.preco_min.label_tag }}
+        {{ form.preco_min }}
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        {{ form.preco_max.label_tag }}
+        {{ form.preco_max }}
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        {{ form.data_inicio.label_tag }}
+        {{ form.data_inicio }}
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        {{ form.data_fim.label_tag }}
+        {{ form.data_fim }}
+      </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            {{ form.categoria.label_tag }}
+            {{ form.categoria }}
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            {{ form.status.label_tag }}
+            {{ form.status }}
+        </div>
+    </div>
+    <div class="col-md-12 text-end">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+  </form>
+
+  <button class="btn"><a href="{% url 'despesa' %}">Criar</a></button>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Vencimento</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Status</th>
+        <th scope="col">Data de criação</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if despesas %}
+        {% for despesa in despesas %}
+          <tr>
+            <td>{{despesa.id}}</td>
+            <td>{{despesa.data_vencimento}}</td>
+            <td>{{despesa.valor}}</td>
+            <td>{{despesa.get_categoria_display}}</td>
+            <td>{{despesa.descricao}}</td>
+            <td>{{despesa.get_status_display}}</td>
+            <td>{{despesa.created_at}}</td>
+            <td>
+                {% if despesa.status == 1 %}
+                  <button class="btn"><a href="{% url 'pagamento' despesa.id %}">Pagar</a></button>
+                {% endif %}
+                <button class="btn btn-danger"><a href="{% url 'delete_despesa' despesa.id %}">Delete</a></button>
+            </td>
+          </tr>
+        {% endfor %}
+      {% else %}
+        <p>Nenhum produto encontrado.</p>
+      {% endif %}
+    </tbody>
+  </table>
 </div>
 {% endblock %}

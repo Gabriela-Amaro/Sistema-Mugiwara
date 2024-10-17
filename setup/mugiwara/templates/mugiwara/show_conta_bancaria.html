@@ -7,7 +7,26 @@
 {% block content %}
 <div class="container">
 <h1 class="text-center mt-3 mb-3">Contas</h1>
-<button><a href="{% url 'conta_bancaria' %}">Criar</a></button>
+{% comment %} formulário de busca {% endcomment %}
+<form method="GET" action="" class="row g-3 mb-4 p-3 border rounded bg-light">
+  <div class="col-md-8">
+      <div class="form-group">
+          {{ form.nome_banco.label_tag }}
+          {{ form.nome_banco }}
+      </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      {{ form.numero_conta.label_tag }}
+      {{ form.numero_conta }}
+    </div>
+  </div>
+
+  <div class="col-md-12 text-end">
+      <button type="submit" class="btn btn-primary">Buscar</button>
+  </div>
+</form>
+<button class="btn"><a href="{% url 'conta_bancaria' %}">Criar</a></button>
 <table class="table table-bordered">
    <thead>
      <tr>

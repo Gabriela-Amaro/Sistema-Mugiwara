@@ -2,10 +2,11 @@ from django.db import models
 from .despesa import despesa
 from .conta_bancaria import conta_bancaria
 
+class  metodos_pagamento(models.IntegerChoices):
+    DINHEIRO = 1, "Dinheiro"
+    DEBITO  = 2, "Débito em conta"
+    
 class pagamento(models.Model):
-    class  metodos_pagamento(models.IntegerChoices):
-        DINHEIRO = 1, "Dinheiro"
-        DEBITO  = 2, "Débito em conta"
 
     valor_pago = models.DecimalField(decimal_places=2, max_digits=9, auto_created=True)
     metodo_pagamento = models.IntegerField(

@@ -7,7 +7,55 @@
 {% block content %}
 <div class="container">
 <h1 class="text-center mt-3 mb-3">Receitas</h1>
-<button><a href="{% url 'receita' %}">Criar</a></button>
+{% comment %} formulário de busca {% endcomment %}
+<form method="GET" action="" class="row g-3 mb-4 p-3 border rounded bg-light">
+    <div class="col-md-12">
+        <div class="form-group">
+            {{ form.query.label_tag }}
+            {{ form.query }}
+        </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        {{ form.preco_min.label_tag }}
+        {{ form.preco_min }}
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        {{ form.preco_max.label_tag }}
+        {{ form.preco_max }}
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        {{ form.data_inicio.label_tag }}
+        {{ form.data_inicio }}
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        {{ form.data_fim.label_tag }}
+        {{ form.data_fim }}
+      </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            {{ form.categoria.label_tag }}
+            {{ form.categoria }}
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            {{ form.status.label_tag }}
+            {{ form.status }}
+        </div>
+    </div>
+    <div class="col-md-12 text-end">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+  </form>
+<button class="btn"><a href="{% url 'receita' %}">Criar</a></button>
 <table class="table table-bordered">
    <thead>
      <tr>

@@ -5,51 +5,10 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from django.views import View
 from .models import conta_bancaria, despesa, receita, fluxo_caixa, pagamento, receita, recebimento
-from .forms import UserCreationForm, ContaBancariaForm, DespesaForm, FluxoCaixaForm, PagamentoForm, ReceitaForm, RecebimentoForm
+from .forms import UserCreationForm, ContaBancariaForm, DespesaForm, FluxoCaixaForm, PagamentoForm, ReceitaForm, RecebimentoForm, SearchDespesaForm, SearchContaBancariaForm, SearchReceitasForm, SearchPagamentosForm, SearchRecebimentosForm
 from decimal import Decimal
 
 import datetime
-
-# def createTodoView(request):
-#     form = TodoForm
-#     if request.method == "POST":
-#         form = TodoForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect("show_url")
-#     template_name = "todoapp/todo.html"
-#     context = {"form": form}
-#     return render(request, template_name, context)
-
-# def showTodoView(request):
-#     obj = Todo.objects.all()
-#     template_name = "todoapp/show.html"
-#     context = {"obj": obj}
-#     return render(request, template_name, context)
-
-# def updateTodoView(request, f_id):
-#     obj = Todo.objects.get(id=f_id)
-#     form = TodoForm(instance=obj)
-#     if request.method == "POST":
-#         form = TodoForm(request.POST, instance=obj)
-#         if form.is_valid():
-#             form.save()
-#             return redirect("show_url")
-#     template_name = "todoapp/todo.html"
-#     context = {"form": form}
-#     return render(request, template_name, context)
-
-# def deleteTodoView(request, f_id):
-#     obj = Todo.objects.get(id = f_id)
-#     if request.method == "POST":
-#         obj.delete()
-#         return redirect("show_url")
-#     template_name = "todoapp/confirmation.html"
-#     context = {"obj": obj}
-#     return render(request, template_name, context)
-
-# --------------------------------------------------
-
 
 @login_required
 def index(request):
@@ -106,9 +65,22 @@ def createContaBancariaView(request):
 
 # @login_required
 def showContaBancariaView(request):
+    form = SearchContaBancariaForm(request.GET or None)    
     contas = conta_bancaria.objects.all()
+
+    if form.is_valid():
+        nome_banco = form.cleaned_data.get('nome_banco')
+        numero_conta = form.cleaned_data.get('numero_conta')
+
+        if nome_banco:
+            contas = contas.filter(nome_banco__icontains=nome_banco)        
+        
+        if numero_conta:
+            contas = contas.filter(numero_conta__icontains=numero_conta)
+
     context = {
-        'contas': contas
+        'contas': contas,
+        'form': form
     }
     return render(request, 'mugiwara/show_conta_bancaria.html', context)
 
@@ -154,9 +126,42 @@ def createDespesaView(request):
 
 # @login_required
 def showDespesaView(request):
+    form = SearchDespesaForm(request.GET or None)
     despesas = despesa.objects.all()
+
+    if form.is_valid():
+        query = form.cleaned_data.get('query')
+        categoria = form.cleaned_data.get('categoria')
+        preco_min = form.cleaned_data.get('preco_min')
+        preco_max = form.cleaned_data.get('preco_max')
+        data_inicio = form.cleaned_data.get('data_inicio')
+        data_fim = form.cleaned_data.get('data_fim')
+        status = form.cleaned_data.get('status')
+
+        if query:
+            despesas = despesas.filter(descricao__icontains=query)        
+        
+        if categoria:
+            despesas = despesas.filter(categoria=categoria)
+        
+        if preco_min:
+            despesas = despesas.filter(valor__gte=preco_min)
+        
+        if preco_max:
+            despesas = despesas.filter(valor__lte=preco_max)
+        
+        if data_inicio:
+            despesas = despesas.filter(data_vencimento__gte=data_inicio)
+        
+        if data_fim:
+            despesas = despesas.filter(data_vencimento__lte=data_fim)
+
+        if status:
+            despesas = despesas.filter(status=status)
+
     context = {
-        'despesas': despesas
+        'despesas': despesas,
+        'form': form
     }
     return render(request, 'mugiwara/show_despesa.html', context)
 
@@ -276,8 +281,25 @@ def pagamentoView(request, d_id):
 
 # @login_required
 def showPagamentoView(request):
+    form = SearchPagamentosForm(request.GET or None)
     pagamentos = pagamento.objects.all()
+
+    if form.is_valid():
+        data_inicio = form.cleaned_data.get('data_inicio')
+        data_fim = form.cleaned_data.get('data_fim')
+        metodo = form.cleaned_data.get('metodo')
+        
+        if data_inicio:
+            pagamentos = pagamentos.filter(created_at__gte=data_inicio)
+        
+        if data_fim:
+            pagamentos = pagamentos.filter(created_at__lte=data_fim)
+
+        if metodo:
+            pagamentos = pagamentos.filter(metodo_pagamento=metodo)
+
     context = {
+        'form': form,
         'pagamentos': pagamentos
     }
     return render(request, 'mugiwara/show_pagamentos.html', context)
@@ -299,8 +321,40 @@ def createReceitaView(request):
 
 # @login_required
 def showReceitaView(request):
+    form = SearchReceitasForm(request.GET or None)
     receitas = receita.objects.all()
+    if form.is_valid():
+        query = form.cleaned_data.get('query')
+        categoria = form.cleaned_data.get('categoria')
+        preco_min = form.cleaned_data.get('preco_min')
+        preco_max = form.cleaned_data.get('preco_max')
+        data_inicio = form.cleaned_data.get('data_inicio')
+        data_fim = form.cleaned_data.get('data_fim')
+        status = form.cleaned_data.get('status')
+
+        if query:
+            receitas = receitas.filter(descricao__icontains=query)        
+        
+        if categoria:
+            receitas = receitas.filter(categoria=categoria)
+        
+        if preco_min:
+            receitas = receitas.filter(valor__gte=preco_min)
+        
+        if preco_max:
+            receitas = receitas.filter(valor__lte=preco_max)
+        
+        if data_inicio:
+            receitas = receitas.filter(data_vencimento__gte=data_inicio)
+        
+        if data_fim:
+            receitas = receitas.filter(data_vencimento__lte=data_fim)
+
+        if status:
+            receitas = receitas.filter(status=status)
+
     context = {
+        'form': form,
         'receitas': receitas
     }
     return render(request, 'mugiwara/show_receita.html', context)
@@ -354,8 +408,26 @@ def recebimentoView(request, r_id):
 
 # @login_required
 def showRecebimentoView(request):
+    form = SearchRecebimentosForm(request.GET or None)
     recebimentos = recebimento.objects.all()
+
+    if form.is_valid():
+        data_inicio = form.cleaned_data.get('data_inicio')
+        data_fim = form.cleaned_data.get('data_fim')
+        metodo = form.cleaned_data.get('metodo')
+        
+        if data_inicio:
+            recebimentos = recebimentos.filter(created_at__gte=data_inicio)
+        
+        if data_fim:
+            recebimentos = recebimentos.filter(created_at__lte=data_fim)
+
+        if metodo:
+            recebimentos = recebimentos.filter(metodo_recebimento=metodo)
+
     context = {
+        'form': form,
         'recebimentos': recebimentos
     }
     return render(request, 'mugiwara/show_recebimentos.html', context)
+

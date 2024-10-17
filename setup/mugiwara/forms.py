@@ -1,5 +1,9 @@
 from django import forms
 from .models import conta_bancaria, despesa, fluxo_caixa, pagamento, receita, recebimento
+from .models.despesa import status_choices, categoria_choices
+from .models.receita import categoria_choices_receita
+from .models.pagamento import metodos_pagamento
+from .models.recebimento import metodos_recebimento
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -194,4 +198,176 @@ class RecebimentoForm(forms.ModelForm):
         queryset=conta_bancaria.objects.all(),
         required=False,  # Vai ser obrigatório apenas para débito em conta
         widget=forms.Select(attrs={'class': 'form-control'})  # Estilizado com Bootstrap
+    )
+
+class SearchDespesaForm(forms.ModelForm):
+    class Meta:
+        model = despesa
+        fields = ['categoria', 'preco_min', 'preco_max', 'data_inicio', 'data_fim', 'status']
+
+    query = forms.CharField(
+        label='Descrição',
+        required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite sua busca...'})
+    )
+
+    categoria_choice = despesa.objects.order_by('categoria').values_list('categoria', flat=True).distinct()
+    categoria = forms.ChoiceField(
+        label='Categoria', 
+        choices=[('', 'Todas')] + [(categoria, categoria_choices(categoria).label) for categoria in categoria_choice], 
+        required=False, 
+        widget=forms.Select(attrs={'class': 'form-select'})
+    )
+    
+    preco_min = forms.DecimalField(
+        label='Preço Mínimo', 
+        required=False, 
+        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Mínimo'})
+    )
+    
+    preco_max = forms.DecimalField(
+        label='Preço Máximo', 
+        required=False, 
+        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Máximo'})
+    )
+    
+    data_inicio = forms.DateField(
+        label='Vencimento Mínimo', 
+        required=False, 
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})
+    )
+    
+    data_fim = forms.DateField(
+        label='Vencimento Máximo', 
+        required=False, 
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})
+    )
+
+    status_choice = despesa.objects.order_by('status').values_list('status', flat=True).distinct()
+    status = forms.ChoiceField(
+        label='Status', 
+        choices=[('', 'Todas')] + [(status, status_choices(status).label) for status in status_choice], 
+        required=False, 
+        widget=forms.Select(attrs={'class': 'form-select'})
+    )
+
+class SearchContaBancariaForm(forms.ModelForm):
+
+    class Meta:
+        model = conta_bancaria
+        fields = ['nome_banco', 'numero_conta']
+
+    nome_banco = forms.CharField(
+        label='Banco',
+        required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome do banco...'})
+    )
+    
+    numero_conta = forms.DecimalField(
+        label='Conta', 
+        required=False, 
+        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Número da conta...'})
+    )
+
+class SearchReceitasForm(forms.ModelForm):
+    class Meta:
+        model = receita
+        fields = ['categoria', 'preco_min', 'preco_max', 'data_inicio', 'data_fim', 'status']
+
+    query = forms.CharField(
+        label='Descrição',
+        required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite sua busca...'})
+    )
+
+    categoria_choice = receita.objects.order_by('categoria').values_list('categoria', flat=True).distinct()
+    categoria = forms.ChoiceField(
+        label='Categoria', 
+        choices=[('', 'Todas')] + [(categoria, categoria_choices_receita(categoria).label) for categoria in categoria_choice], 
+        required=False, 
+        widget=forms.Select(attrs={'class': 'form-select'})
+    )
+    
+    preco_min = forms.DecimalField(
+        label='Preço Mínimo', 
+        required=False, 
+        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Mínimo'})
+    )
+    
+    preco_max = forms.DecimalField(
+        label='Preço Máximo', 
+        required=False, 
+        widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Máximo'})
+    )
+    
+    data_inicio = forms.DateField(
+        label='Vencimento Mínimo', 
+        required=False, 
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})
+    )
+    
+    data_fim = forms.DateField(
+        label='Vencimento Máximo', 
+        required=False, 
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})
+    )
+
+    status_choice = receita.objects.order_by('status').values_list('status', flat=True).distinct()
+    status = forms.ChoiceField(
+        label='Status', 
+        choices=[('', 'Todas')] + [(status, status_choices(status).label) for status in status_choice], 
+        required=False, 
+        widget=forms.Select(attrs={'class': 'form-select'})
+    )
+
+class SearchPagamentosForm(forms.ModelForm):
+
+    class Meta:
+        model = pagamento
+        fields = ['data_inicio', 'data_fim', 'metodo']
+
+    data_inicio = forms.DateField(
+        label='De', 
+        required=False, 
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})
+    )
+    
+    data_fim = forms.DateField(
+        label='À', 
+        required=False, 
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})
+    )
+
+    metodo_pagamento = pagamento.objects.order_by('metodo_pagamento').values_list('metodo_pagamento', flat=True).distinct()
+    metodo = forms.ChoiceField(
+        label='Método de Pagamento', 
+        choices=[('', 'Todos')] + [(metodo, metodos_pagamento(metodo).label) for metodo in metodo_pagamento], 
+        required=False, 
+        widget=forms.Select(attrs={'class': 'form-select'})
+    )
+
+class SearchRecebimentosForm(forms.ModelForm):
+
+    class Meta:
+        model = recebimento
+        fields = ['data_inicio', 'data_fim', 'metodo']
+
+    data_inicio = forms.DateField(
+        label='De', 
+        required=False, 
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})
+    )
+    
+    data_fim = forms.DateField(
+        label='À', 
+        required=False, 
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})
+    )
+
+    metodo_recebimento = recebimento.objects.order_by('metodo_recebimento').values_list('metodo_recebimento', flat=True).distinct()
+    metodo = forms.ChoiceField(
+        label='Método de recebimento', 
+        choices=[('', 'Todos')] + [(metodo, metodos_recebimento(metodo).label) for metodo in metodo_recebimento], 
+        required=False, 
+        widget=forms.Select(attrs={'class': 'form-select'})
     )

@@ -7,7 +7,32 @@
 {% block content %}
 <div class="container">
 <h1 class="text-center mt-3 mb-3">Pagamentos</h1>
-<button><a href="{% url 'show_despesa' %}">Criar</a></button>
+{% comment %} formulário de busca {% endcomment %}
+<form method="GET" action="" class="row g-3 mb-4 p-3 border rounded bg-light">
+  <div class="col-md-6">
+    <div class="form-group">
+      {{ form.data_inicio.label_tag }}
+      {{ form.data_inicio }}
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      {{ form.data_fim.label_tag }}
+      {{ form.data_fim }}
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+        {{ form.metodo.label_tag }}
+        {{ form.metodo }}
+    </div>
+  </div>
+
+  <div class="col-md-12 text-end">
+      <button type="submit" class="btn btn-primary">Buscar</button>
+  </div>
+</form>
+<button class="btn"><a href="{% url 'show_despesa' %}">Criar</a></button>
 <table class="table table-bordered">
    <thead>
      <tr>
