@@ -1,0 +1,972 @@
+[
+{
+  "model": "mugiwara.conta_bancaria",
+  "pk": 14,
+  "fields": {
+    "updated_at": "2024-10-17T17:58:46.827",
+    "created_at": "2024-10-15T21:02:11.147",
+    "saldo_atual": "22232.00",
+    "nome_banco": "sadasfas",
+    "agencia": "121",
+    "numero_conta": "121212"
+  }
+},
+{
+  "model": "mugiwara.conta_bancaria",
+  "pk": 15,
+  "fields": {
+    "updated_at": "2024-10-17T17:16:34.061",
+    "created_at": "2024-10-17T16:17:06.003",
+    "saldo_atual": "12.00",
+    "nome_banco": "nuteste",
+    "agencia": "000",
+    "numero_conta": "1111"
+  }
+},
+{
+  "model": "mugiwara.conta_bancaria",
+  "pk": 16,
+  "fields": {
+    "updated_at": "1983-08-05T05:26:47.387",
+    "created_at": "2018-03-10T16:00:29.925",
+    "saldo_atual": "0.59",
+    "nome_banco": "Enjoy recent attorney argue toward painting.",
+    "agencia": "ris",
+    "numero_conta": "Same standard while."
+  }
+},
+{
+  "model": "mugiwara.conta_bancaria",
+  "pk": 17,
+  "fields": {
+    "updated_at": "1995-01-05T01:43:29.738",
+    "created_at": "2009-12-29T02:58:21.816",
+    "saldo_atual": "0.74",
+    "nome_banco": "Computer spring perhaps difference can.",
+    "agencia": "dif",
+    "numero_conta": "Thing mind ball sure hard."
+  }
+},
+{
+  "model": "mugiwara.conta_bancaria",
+  "pk": 18,
+  "fields": {
+    "updated_at": "1981-01-27T18:15:36.273",
+    "created_at": "2009-07-15T03:29:04.340",
+    "saldo_atual": "0.62",
+    "nome_banco": "Away energy hotel the with indicate.",
+    "agencia": "off",
+    "numero_conta": "Edge where effect already natural bank single."
+  }
+},
+{
+  "model": "mugiwara.conta_bancaria",
+  "pk": 19,
+  "fields": {
+    "updated_at": "2000-02-04T18:33:44.670",
+    "created_at": "1990-04-26T12:41:55.317",
+    "saldo_atual": "0.91",
+    "nome_banco": "Activity lose lot free chance dinner.",
+    "agencia": "any",
+    "numero_conta": "Face game start."
+  }
+},
+{
+  "model": "mugiwara.conta_bancaria",
+  "pk": 20,
+  "fields": {
+    "updated_at": "1996-08-06T20:26:28.312",
+    "created_at": "2009-09-15T17:59:33.130",
+    "saldo_atual": "0.68",
+    "nome_banco": "Important alone wife.",
+    "agencia": "nor",
+    "numero_conta": "I minute most."
+  }
+},
+{
+  "model": "mugiwara.conta_bancaria",
+  "pk": 21,
+  "fields": {
+    "updated_at": "1970-03-24T09:27:50.066",
+    "created_at": "2017-09-25T02:17:09.456",
+    "saldo_atual": "0.89",
+    "nome_banco": "One if chair rule treat hit tough.",
+    "agencia": "eas",
+    "numero_conta": "Issue guess produce."
+  }
+},
+{
+  "model": "mugiwara.conta_bancaria",
+  "pk": 22,
+  "fields": {
+    "updated_at": "2007-08-04T15:32:46.785",
+    "created_at": "1982-12-28T02:40:43.217",
+    "saldo_atual": "0.94",
+    "nome_banco": "Son sell hit nation worry challenge get laugh.",
+    "agencia": "tri",
+    "numero_conta": "Home onto language push inside beyond."
+  }
+},
+{
+  "model": "mugiwara.conta_bancaria",
+  "pk": 23,
+  "fields": {
+    "updated_at": "2007-03-01T11:28:09.638",
+    "created_at": "1994-12-08T09:55:57.823",
+    "saldo_atual": "0.00",
+    "nome_banco": "Occur heart these which.",
+    "agencia": "boa",
+    "numero_conta": "Term seven public professor large."
+  }
+},
+{
+  "model": "mugiwara.conta_bancaria",
+  "pk": 24,
+  "fields": {
+    "updated_at": "1996-07-18T17:24:45.453",
+    "created_at": "1997-08-30T07:00:46.337",
+    "saldo_atual": "0.97",
+    "nome_banco": "Near picture scene none keep short.",
+    "agencia": "nat",
+    "numero_conta": "Wind piece throughout final ball push."
+  }
+},
+{
+  "model": "mugiwara.conta_bancaria",
+  "pk": 25,
+  "fields": {
+    "updated_at": "1993-05-17T16:44:14.903",
+    "created_at": "2013-11-01T04:07:53.195",
+    "saldo_atual": "0.19",
+    "nome_banco": "Later kid skill news right.",
+    "agencia": "mat",
+    "numero_conta": "Lose everything notice reduce not should."
+  }
+},
+{
+  "model": "mugiwara.despesa",
+  "pk": 3,
+  "fields": {
+    "created_at": "2024-10-15T19:48:39.168",
+    "descricao": "awrrw",
+    "data_vencimento": "2024-10-25",
+    "valor": "1.00",
+    "categoria": 1,
+    "status": 2
+  }
+},
+{
+  "model": "mugiwara.despesa",
+  "pk": 9,
+  "fields": {
+    "created_at": "2024-10-16T13:10:09.851",
+    "descricao": "wdsd",
+    "data_vencimento": "2024-10-16",
+    "valor": "10.00",
+    "categoria": 2,
+    "status": 2
+  }
+},
+{
+  "model": "mugiwara.despesa",
+  "pk": 10,
+  "fields": {
+    "created_at": "2024-10-17T12:54:10.497",
+    "descricao": "awrrwa",
+    "data_vencimento": "1111-11-11",
+    "valor": "10.00",
+    "categoria": 1,
+    "status": 2
+  }
+},
+{
+  "model": "mugiwara.despesa",
+  "pk": 12,
+  "fields": {
+    "created_at": "2024-10-17T16:35:02.321",
+    "descricao": "aaaaaaaaaa",
+    "data_vencimento": "1111-11-11",
+    "valor": "1111111.00",
+    "categoria": 1,
+    "status": 1
+  }
+},
+{
+  "model": "mugiwara.despesa",
+  "pk": 13,
+  "fields": {
+    "created_at": "2013-01-03T03:20:58.916",
+    "descricao": "Tough that push cut drug behavior. Own new trip various indeed worker.\nBlue all attorney other bed. Enjoy itself other property.\nChurch draw candidate too. My bank dinner too produce.",
+    "data_vencimento": "2018-07-06",
+    "valor": "0.47",
+    "categoria": 1,
+    "status": 1
+  }
+},
+{
+  "model": "mugiwara.despesa",
+  "pk": 14,
+  "fields": {
+    "created_at": "1978-05-05T21:59:35.866",
+    "descricao": "Win energy section. Hold push choose mention give.\nPersonal level career development use. Meeting day forward best. Yourself old this smile lot official.",
+    "data_vencimento": "1984-01-25",
+    "valor": "0.88",
+    "categoria": 1,
+    "status": 1
+  }
+},
+{
+  "model": "mugiwara.despesa",
+  "pk": 15,
+  "fields": {
+    "created_at": "2015-08-21T05:02:42.527",
+    "descricao": "Social future country. Why fine he use. Eight dog candidate money.\nBox hand tell investment commercial stage special.\nEvening wrong owner research. Travel hot political defense when show poor.",
+    "data_vencimento": "2012-05-09",
+    "valor": "0.07",
+    "categoria": 1,
+    "status": 1
+  }
+},
+{
+  "model": "mugiwara.despesa",
+  "pk": 16,
+  "fields": {
+    "created_at": "1996-03-23T21:53:16.849",
+    "descricao": "Yard goal agree source stand like.\nToward prepare light party before dark use. Fine within participant major assume. Hard rather two husband word method.",
+    "data_vencimento": "2009-06-27",
+    "valor": "0.95",
+    "categoria": 1,
+    "status": 1
+  }
+},
+{
+  "model": "mugiwara.despesa",
+  "pk": 17,
+  "fields": {
+    "created_at": "1975-10-03T03:35:01.302",
+    "descricao": "Weight over change. Young fact fly some decide show billion.\nEconomic sea goal language former without cover. Pressure move traditional peace.",
+    "data_vencimento": "2009-07-27",
+    "valor": "0.95",
+    "categoria": 1,
+    "status": 1
+  }
+},
+{
+  "model": "mugiwara.despesa",
+  "pk": 18,
+  "fields": {
+    "created_at": "2013-02-22T00:14:24.394",
+    "descricao": "Bar sure say next health test.\nHerself wonder else last bit talk. Within live special meeting factor figure institution want. Politics man this cultural.",
+    "data_vencimento": "2024-06-12",
+    "valor": "0.18",
+    "categoria": 1,
+    "status": 1
+  }
+},
+{
+  "model": "mugiwara.despesa",
+  "pk": 19,
+  "fields": {
+    "created_at": "1991-01-16T00:14:48.495",
+    "descricao": "Still last reduce kid bring let participant.\nMarriage drive away party step. Spend question quickly office police result.\nCatch seven she health really.",
+    "data_vencimento": "1981-01-11",
+    "valor": "0.74",
+    "categoria": 1,
+    "status": 1
+  }
+},
+{
+  "model": "mugiwara.despesa",
+  "pk": 20,
+  "fields": {
+    "created_at": "1990-11-03T13:19:22.558",
+    "descricao": "Travel film follow anyone. Score fish professor radio. Its able cultural physical.\nCommercial phone see offer. Ability keep herself send. Down until staff seem then.",
+    "data_vencimento": "1994-01-19",
+    "valor": "0.76",
+    "categoria": 1,
+    "status": 1
+  }
+},
+{
+  "model": "mugiwara.despesa",
+  "pk": 21,
+  "fields": {
+    "created_at": "2010-09-02T19:07:27.406",
+    "descricao": "Leader usually about everybody store road traditional. Page describe ready six respond seven.\nPressure stage among somebody leave yeah. Attention will star never.",
+    "data_vencimento": "1972-01-16",
+    "valor": "0.26",
+    "categoria": 1,
+    "status": 1
+  }
+},
+{
+  "model": "mugiwara.despesa",
+  "pk": 22,
+  "fields": {
+    "created_at": "1981-06-07T05:43:46.369",
+    "descricao": "Appear husband since but wonder least. Upon once consumer lead method throughout bank reveal.\nAt floor particularly together message fire cut. Red agent oil TV cover theory.",
+    "data_vencimento": "2008-09-15",
+    "valor": "0.41",
+    "categoria": 1,
+    "status": 1
+  }
+},
+{
+  "model": "mugiwara.fluxo_caixa",
+  "pk": 1,
+  "fields": {
+    "created_at": "2024-10-15T22:56:57.069",
+    "data_inicial": "2024-10-10",
+    "data_final": "2024-10-11"
+  }
+},
+{
+  "model": "mugiwara.fluxo_caixa",
+  "pk": 2,
+  "fields": {
+    "created_at": "2024-10-16T00:01:09.802",
+    "data_inicial": "2002-02-10",
+    "data_final": "2024-10-15"
+  }
+},
+{
+  "model": "mugiwara.fluxo_caixa",
+  "pk": 5,
+  "fields": {
+    "created_at": "2024-10-16T00:49:36.987",
+    "data_inicial": "2024-10-14",
+    "data_final": "2024-10-15"
+  }
+},
+{
+  "model": "mugiwara.fluxo_caixa",
+  "pk": 6,
+  "fields": {
+    "created_at": "2017-08-19T20:27:11.480",
+    "data_inicial": "1970-03-31",
+    "data_final": "2000-02-25"
+  }
+},
+{
+  "model": "mugiwara.fluxo_caixa",
+  "pk": 7,
+  "fields": {
+    "created_at": "2010-07-21T06:01:55.397",
+    "data_inicial": "2004-03-27",
+    "data_final": "2008-01-14"
+  }
+},
+{
+  "model": "mugiwara.fluxo_caixa",
+  "pk": 8,
+  "fields": {
+    "created_at": "1996-09-28T03:02:49.175",
+    "data_inicial": "1976-02-26",
+    "data_final": "2011-12-29"
+  }
+},
+{
+  "model": "mugiwara.fluxo_caixa",
+  "pk": 9,
+  "fields": {
+    "created_at": "1979-03-13T02:22:13.725",
+    "data_inicial": "1991-07-08",
+    "data_final": "1998-06-06"
+  }
+},
+{
+  "model": "mugiwara.fluxo_caixa",
+  "pk": 10,
+  "fields": {
+    "created_at": "2008-10-13T14:33:08.767",
+    "data_inicial": "1975-06-23",
+    "data_final": "1978-07-11"
+  }
+},
+{
+  "model": "mugiwara.fluxo_caixa",
+  "pk": 11,
+  "fields": {
+    "created_at": "2003-06-07T09:01:11.944",
+    "data_inicial": "1997-09-30",
+    "data_final": "2017-06-23"
+  }
+},
+{
+  "model": "mugiwara.fluxo_caixa",
+  "pk": 12,
+  "fields": {
+    "created_at": "1980-10-11T09:31:31.837",
+    "data_inicial": "1981-05-03",
+    "data_final": "2019-08-27"
+  }
+},
+{
+  "model": "mugiwara.fluxo_caixa",
+  "pk": 13,
+  "fields": {
+    "created_at": "1997-08-31T23:57:05.976",
+    "data_inicial": "2022-06-10",
+    "data_final": "2008-09-17"
+  }
+},
+{
+  "model": "mugiwara.fluxo_caixa",
+  "pk": 14,
+  "fields": {
+    "created_at": "2018-01-22T08:35:36.922",
+    "data_inicial": "1973-08-05",
+    "data_final": "2022-12-28"
+  }
+},
+{
+  "model": "mugiwara.fluxo_caixa",
+  "pk": 15,
+  "fields": {
+    "created_at": "2007-08-18T08:54:56.275",
+    "data_inicial": "2020-06-20",
+    "data_final": "2003-03-23"
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 1,
+  "fields": {
+    "created_at": "2024-10-16T04:09:33.869",
+    "valor_pago": "1.00",
+    "metodo_pagamento": 1,
+    "despesa_id": 3,
+    "conta_bancaria_id": null
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 2,
+  "fields": {
+    "created_at": "2024-10-16T12:01:12.212",
+    "valor_pago": "1.00",
+    "metodo_pagamento": 1,
+    "despesa_id": 3,
+    "conta_bancaria_id": null
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 3,
+  "fields": {
+    "created_at": "2024-10-16T12:17:23.001",
+    "valor_pago": "1.00",
+    "metodo_pagamento": 1,
+    "despesa_id": 3,
+    "conta_bancaria_id": null
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 4,
+  "fields": {
+    "created_at": "2024-10-16T12:19:00.377",
+    "valor_pago": "1.00",
+    "metodo_pagamento": 2,
+    "despesa_id": 3,
+    "conta_bancaria_id": 14
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 5,
+  "fields": {
+    "created_at": "2024-10-16T12:21:59.649",
+    "valor_pago": "1.00",
+    "metodo_pagamento": 1,
+    "despesa_id": 3,
+    "conta_bancaria_id": 14
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 6,
+  "fields": {
+    "created_at": "2024-10-16T12:25:45.848",
+    "valor_pago": "1.00",
+    "metodo_pagamento": 2,
+    "despesa_id": 3,
+    "conta_bancaria_id": 14
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 7,
+  "fields": {
+    "created_at": "2024-10-16T12:46:46.031",
+    "valor_pago": "1.00",
+    "metodo_pagamento": 2,
+    "despesa_id": 3,
+    "conta_bancaria_id": 14
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 8,
+  "fields": {
+    "created_at": "2024-10-16T12:48:34.263",
+    "valor_pago": "1.00",
+    "metodo_pagamento": 2,
+    "despesa_id": 3,
+    "conta_bancaria_id": 14
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 9,
+  "fields": {
+    "created_at": "2024-10-16T12:55:53.718",
+    "valor_pago": "1.00",
+    "metodo_pagamento": 1,
+    "despesa_id": 3,
+    "conta_bancaria_id": 14
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 10,
+  "fields": {
+    "created_at": "2024-10-16T13:10:28.172",
+    "valor_pago": "10.00",
+    "metodo_pagamento": 2,
+    "despesa_id": 9,
+    "conta_bancaria_id": 14
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 11,
+  "fields": {
+    "created_at": "2024-10-16T13:12:26.664",
+    "valor_pago": "10.00",
+    "metodo_pagamento": 1,
+    "despesa_id": 9,
+    "conta_bancaria_id": 14
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 12,
+  "fields": {
+    "created_at": "2024-10-17T13:05:27.213",
+    "valor_pago": "10.00",
+    "metodo_pagamento": 1,
+    "despesa_id": 10,
+    "conta_bancaria_id": 14
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 17,
+  "fields": {
+    "created_at": "1972-03-04T09:03:41.786",
+    "valor_pago": "0.78",
+    "metodo_pagamento": 1,
+    "despesa_id": 19,
+    "conta_bancaria_id": 20
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 18,
+  "fields": {
+    "created_at": "2012-12-12T02:27:18.096",
+    "valor_pago": "0.12",
+    "metodo_pagamento": 1,
+    "despesa_id": 19,
+    "conta_bancaria_id": 17
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 19,
+  "fields": {
+    "created_at": "2014-11-05T01:25:21.483",
+    "valor_pago": "0.87",
+    "metodo_pagamento": 1,
+    "despesa_id": 14,
+    "conta_bancaria_id": 19
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 20,
+  "fields": {
+    "created_at": "1987-11-22T09:38:32.068",
+    "valor_pago": "0.48",
+    "metodo_pagamento": 1,
+    "despesa_id": 13,
+    "conta_bancaria_id": 22
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 21,
+  "fields": {
+    "created_at": "2016-11-10T02:40:23.464",
+    "valor_pago": "0.67",
+    "metodo_pagamento": 1,
+    "despesa_id": 15,
+    "conta_bancaria_id": 17
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 22,
+  "fields": {
+    "created_at": "1983-02-08T18:25:33.705",
+    "valor_pago": "0.18",
+    "metodo_pagamento": 1,
+    "despesa_id": 14,
+    "conta_bancaria_id": 25
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 23,
+  "fields": {
+    "created_at": "1990-07-16T15:12:54.161",
+    "valor_pago": "0.06",
+    "metodo_pagamento": 1,
+    "despesa_id": 20,
+    "conta_bancaria_id": 21
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 24,
+  "fields": {
+    "created_at": "2014-07-04T09:02:47.312",
+    "valor_pago": "0.10",
+    "metodo_pagamento": 1,
+    "despesa_id": 18,
+    "conta_bancaria_id": 16
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 25,
+  "fields": {
+    "created_at": "1984-09-20T04:54:11.990",
+    "valor_pago": "0.74",
+    "metodo_pagamento": 1,
+    "despesa_id": 13,
+    "conta_bancaria_id": 23
+  }
+},
+{
+  "model": "mugiwara.pagamento",
+  "pk": 26,
+  "fields": {
+    "created_at": "1987-01-05T07:54:18.152",
+    "valor_pago": "0.78",
+    "metodo_pagamento": 1,
+    "despesa_id": 18,
+    "conta_bancaria_id": 24
+  }
+},
+{
+  "model": "mugiwara.receita",
+  "pk": 2,
+  "fields": {
+    "descricao": "adadasds",
+    "data_vencimento": "2024-10-15",
+    "valor": "12.00",
+    "categoria": 1,
+    "status": 2,
+    "created_at": "2024-10-16T00:50:43.166"
+  }
+},
+{
+  "model": "mugiwara.receita",
+  "pk": 6,
+  "fields": {
+    "descricao": "asdas",
+    "data_vencimento": "0022-02-22",
+    "valor": "22222.00",
+    "categoria": 1,
+    "status": 2,
+    "created_at": "2024-10-17T17:58:26.246"
+  }
+},
+{
+  "model": "mugiwara.receita",
+  "pk": 7,
+  "fields": {
+    "descricao": "adsdfsafasf",
+    "data_vencimento": "2024-10-17",
+    "valor": "9999.00",
+    "categoria": 1,
+    "status": 2,
+    "created_at": "2024-10-17T21:10:44.144"
+  }
+},
+{
+  "model": "mugiwara.receita",
+  "pk": 8,
+  "fields": {
+    "descricao": "History attorney work policy.\nIncrease process when especially skill near discussion. Money law less investment design since.\nLead south especially decision. Agency offer one him nice have.",
+    "data_vencimento": "2011-11-13",
+    "valor": "0.04",
+    "categoria": 1,
+    "status": 1,
+    "created_at": "1970-07-20T01:01:12.139"
+  }
+},
+{
+  "model": "mugiwara.receita",
+  "pk": 9,
+  "fields": {
+    "descricao": "Window glass hit response language sister success. Rate show risk goal food find audience.\nEvery professional possible ever. Individual knowledge expert discussion color. Throw nice Democrat.",
+    "data_vencimento": "2022-11-12",
+    "valor": "0.49",
+    "categoria": 1,
+    "status": 1,
+    "created_at": "1973-03-26T23:39:24.304"
+  }
+},
+{
+  "model": "mugiwara.receita",
+  "pk": 10,
+  "fields": {
+    "descricao": "Thus easy others ten but. Grow time her establish. Its difficult trip story.\nWhere usually relationship talk drug. Talk piece science fact.",
+    "data_vencimento": "2011-06-17",
+    "valor": "0.74",
+    "categoria": 1,
+    "status": 1,
+    "created_at": "1991-09-22T01:48:52.304"
+  }
+},
+{
+  "model": "mugiwara.receita",
+  "pk": 11,
+  "fields": {
+    "descricao": "Part floor less dog realize. Ever million beautiful assume. Conference five together miss.\nTv break artist up television. Health admit parent more degree design decide window. Stand blue ground true.",
+    "data_vencimento": "1994-04-15",
+    "valor": "0.79",
+    "categoria": 1,
+    "status": 1,
+    "created_at": "1979-09-22T12:49:48.594"
+  }
+},
+{
+  "model": "mugiwara.receita",
+  "pk": 12,
+  "fields": {
+    "descricao": "Might exactly argue tax cause. Start thus account run inside travel leave.",
+    "data_vencimento": "1981-08-26",
+    "valor": "0.54",
+    "categoria": 1,
+    "status": 1,
+    "created_at": "2000-05-27T17:33:18.312"
+  }
+},
+{
+  "model": "mugiwara.receita",
+  "pk": 13,
+  "fields": {
+    "descricao": "Wait upon age probably material have program lawyer. Book model film offer few agree project. Husband head usually agree former computer.",
+    "data_vencimento": "2021-08-26",
+    "valor": "0.77",
+    "categoria": 1,
+    "status": 1,
+    "created_at": "1986-05-29T00:18:50.489"
+  }
+},
+{
+  "model": "mugiwara.receita",
+  "pk": 14,
+  "fields": {
+    "descricao": "Level much daughter subject rise. To sell call continue region ahead natural. Line arm animal rich.",
+    "data_vencimento": "2003-06-13",
+    "valor": "0.74",
+    "categoria": 1,
+    "status": 1,
+    "created_at": "2013-01-05T04:00:11.319"
+  }
+},
+{
+  "model": "mugiwara.receita",
+  "pk": 15,
+  "fields": {
+    "descricao": "Officer international five relate kind. Deep environmental benefit decide dinner serve. Notice decade summer indeed specific.",
+    "data_vencimento": "2008-08-31",
+    "valor": "0.44",
+    "categoria": 1,
+    "status": 1,
+    "created_at": "2008-09-21T12:09:45.436"
+  }
+},
+{
+  "model": "mugiwara.receita",
+  "pk": 16,
+  "fields": {
+    "descricao": "From total personal performance performance cost case. Purpose most team coach easy government. Key north small.",
+    "data_vencimento": "1994-11-09",
+    "valor": "0.82",
+    "categoria": 1,
+    "status": 1,
+    "created_at": "2020-08-31T10:49:43.532"
+  }
+},
+{
+  "model": "mugiwara.receita",
+  "pk": 17,
+  "fields": {
+    "descricao": "Contain window source defense. Ability word cost share environment somebody every.\nTonight sit officer job who. Surface pretty everyone gun speak yeah not look.",
+    "data_vencimento": "1992-11-07",
+    "valor": "0.49",
+    "categoria": 1,
+    "status": 1,
+    "created_at": "1972-09-08T07:01:34.052"
+  }
+},
+{
+  "model": "mugiwara.recebimento",
+  "pk": 2,
+  "fields": {
+    "valor_pago": "12.00",
+    "metodo_recebimento": 2,
+    "created_at": "2024-10-17T17:16:34.080",
+    "receita_id": 2,
+    "conta_bancaria_id": 15
+  }
+},
+{
+  "model": "mugiwara.recebimento",
+  "pk": 3,
+  "fields": {
+    "valor_pago": "22222.00",
+    "metodo_recebimento": 2,
+    "created_at": "2024-10-17T17:58:46.845",
+    "receita_id": 6,
+    "conta_bancaria_id": 14
+  }
+},
+{
+  "model": "mugiwara.recebimento",
+  "pk": 4,
+  "fields": {
+    "valor_pago": "9999.00",
+    "metodo_recebimento": 1,
+    "created_at": "2024-10-17T21:10:59.975",
+    "receita_id": 7,
+    "conta_bancaria_id": null
+  }
+},
+{
+  "model": "mugiwara.recebimento",
+  "pk": 5,
+  "fields": {
+    "valor_pago": "0.88",
+    "metodo_recebimento": 1,
+    "created_at": "1994-05-25T03:41:15.686",
+    "receita_id": 14,
+    "conta_bancaria_id": 19
+  }
+},
+{
+  "model": "mugiwara.recebimento",
+  "pk": 6,
+  "fields": {
+    "valor_pago": "0.34",
+    "metodo_recebimento": 1,
+    "created_at": "2008-01-03T03:12:07.676",
+    "receita_id": 9,
+    "conta_bancaria_id": 23
+  }
+},
+{
+  "model": "mugiwara.recebimento",
+  "pk": 7,
+  "fields": {
+    "valor_pago": "0.13",
+    "metodo_recebimento": 1,
+    "created_at": "2001-05-27T16:16:56.483",
+    "receita_id": 11,
+    "conta_bancaria_id": 16
+  }
+},
+{
+  "model": "mugiwara.recebimento",
+  "pk": 8,
+  "fields": {
+    "valor_pago": "0.02",
+    "metodo_recebimento": 1,
+    "created_at": "1993-04-15T15:01:10.259",
+    "receita_id": 13,
+    "conta_bancaria_id": 20
+  }
+},
+{
+  "model": "mugiwara.recebimento",
+  "pk": 9,
+  "fields": {
+    "valor_pago": "0.13",
+    "metodo_recebimento": 1,
+    "created_at": "1998-02-11T19:12:35.265",
+    "receita_id": 12,
+    "conta_bancaria_id": 23
+  }
+},
+{
+  "model": "mugiwara.recebimento",
+  "pk": 10,
+  "fields": {
+    "valor_pago": "0.44",
+    "metodo_recebimento": 1,
+    "created_at": "1971-09-30T07:36:30.976",
+    "receita_id": 10,
+    "conta_bancaria_id": 24
+  }
+},
+{
+  "model": "mugiwara.recebimento",
+  "pk": 11,
+  "fields": {
+    "valor_pago": "0.89",
+    "metodo_recebimento": 1,
+    "created_at": "2003-12-30T12:23:48.995",
+    "receita_id": 10,
+    "conta_bancaria_id": 17
+  }
+},
+{
+  "model": "mugiwara.recebimento",
+  "pk": 12,
+  "fields": {
+    "valor_pago": "0.07",
+    "metodo_recebimento": 1,
+    "created_at": "2021-03-04T04:10:56.387",
+    "receita_id": 17,
+    "conta_bancaria_id": 25
+  }
+},
+{
+  "model": "mugiwara.recebimento",
+  "pk": 13,
+  "fields": {
+    "valor_pago": "0.51",
+    "metodo_recebimento": 1,
+    "created_at": "1970-09-27T16:21:41.791",
+    "receita_id": 12,
+    "conta_bancaria_id": 18
+  }
+},
+{
+  "model": "mugiwara.recebimento",
+  "pk": 14,
+  "fields": {
+    "valor_pago": "0.19",
+    "metodo_recebimento": 1,
+    "created_at": "2022-05-01T23:16:09.825",
+    "receita_id": 14,
+    "conta_bancaria_id": 16
+  }
+}
+]
