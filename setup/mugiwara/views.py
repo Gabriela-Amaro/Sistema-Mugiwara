@@ -12,18 +12,24 @@ import datetime
 
 @login_required
 def index(request):
-    saldo_atual = conta_bancaria.objects.aggregate(saldo_atual=Sum('saldo_atual'))['saldo_atual']
-    total_receita = receita.objects.aggregate(total_receita=Sum('valor'))['total_receita']
-    total_despesa = despesa.objects.aggregate(total_despesa=Sum('valor'))['total_despesa']
+    saldo_contas = conta_bancaria.objects.aggregate(saldo_atual=Sum('saldo_atual'))['saldo_atual']
+
+    entradas_confirmadas = receita.objects.filter(status=2).aggregate(total_receita=Sum('valor'))['total_receita'] 
+    entradas_futuras = receita.objects.filter(status=1).aggregate(total_receita=Sum('valor'))['total_receita']
+
+    saidas_confirmadas = despesa.objects.filter(status=2).aggregate(total_despesa=Sum('valor'))['total_despesa']
+    saidas_futuras = despesa.objects.filter(status=1).aggregate(total_despesa=Sum('valor'))['total_despesa']
 
     contas = conta_bancaria.objects.all()
     receitas = receita.objects.all()
     despesas = despesa.objects.all()
 
     context = {
-        'saldo_atual': saldo_atual if saldo_atual else '0,00', 
-        'total_receita': total_receita if total_receita else '0,00',
-        'total_despesa': total_despesa if total_despesa else '0,00',
+        'saldo_atual': saldo_contas if saldo_contas else '0,00', 
+        'entradas_confirmadas': entradas_confirmadas if entradas_confirmadas else '0,00',
+        'entradas_futuras': entradas_futuras if entradas_futuras else '0,00',
+        'saidas_confirmadas': saidas_confirmadas if saidas_confirmadas else '0,00',
+        'saidas_futuras': saidas_futuras if saidas_futuras else '0,00',
         'receitas': receitas,
         'despesas': despesas,
         'contas': contas,
