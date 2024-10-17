@@ -9,11 +9,11 @@
     <div class="row">
         <div class="col-md-6">
             <div class="alert alert-info">
-                <p><strong>Saldo em Banco:</strong> {{saldo_atual}}</p>
-                <p><strong>Entradas Confirmadas:</strong> {{entradas_confirmadas}}</p>
-                <p><strong>Saídas Confirmadas:</strong> {{saidas_confirmadas}}</p>
-                <p><strong>Entradas Futuras:</strong> {{entradas_futuras}}</p>
-                <p><strong>Saídas Futuras:</strong> {{saidas_futuras}}</p>
+                <p><strong>Saldo em Banco:</strong> {{saldo_atual|floatformat:2}}</p>
+                <p><strong>Entradas Confirmadas:</strong> {{entradas_confirmadas|floatformat:2}}</p>
+                <p><strong>Saídas Confirmadas:</strong> {{saidas_confirmadas|floatformat:2}}</p>
+                <p><strong>Entradas Futuras:</strong> {{entradas_futuras|floatformat:2}}</p>
+                <p><strong>Saídas Futuras:</strong> {{saidas_futuras|floatformat:2}}</p>
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@
 <div class='container'>
   <h1 class="text-center mt-3 mb-3">Fluxo de Caixa</h1>
   <p>De: {{fluxo_caixa.data_inicial}}<br>À: {{fluxo_caixa.data_final}}</p>
-  <p>Total de Saídas: {{total_despesas}}<br>Total de Entradas: {{total_receitas}}</p>
+  <p>Total de Saídas: {{total_despesas|floatformat:2}}<br>Total de Entradas: {{total_receitas|floatformat:2}}</p>
 
   <table class="table table-bordered">
       <strong>Receitas: </strong>
