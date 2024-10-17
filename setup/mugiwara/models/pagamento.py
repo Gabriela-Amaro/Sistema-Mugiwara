@@ -19,7 +19,7 @@ class pagamento(models.Model):
     )
     conta_bancaria_id  = models.ForeignKey(
         conta_bancaria,
-        on_delete = models.CASCADE,
+        on_delete = models.SET_NULL,
         null = True,
         blank = True
     )

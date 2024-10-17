@@ -1,5 +1,5 @@
 from django import forms
-from .models import conta_bancaria, despesa, fluxo_caixa, pagamento
+from .models import conta_bancaria, despesa, fluxo_caixa, pagamento, receita, recebimento
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -107,7 +107,7 @@ class FluxoCaixaForm(forms.ModelForm):
             })
         }
 
-class PagamentosForm(forms.ModelForm):
+class PagamentoForm(forms.ModelForm):
     class Meta:
         model = pagamento
         fields = 'metodo_pagamento', 'conta_bancaria_id'
@@ -119,7 +119,73 @@ class PagamentosForm(forms.ModelForm):
         widgets = {
             'metodo_pagamento': forms.Select(attrs={
                 'class': 'form-select',
-                'placeholder': 'Selecione a Método de pagamento',
+                'placeholder': 'Selecione o Método de pagamento',
+                'required': 'true'
+            })
+        }
+
+    conta_bancaria_id = forms.ModelChoiceField(
+        queryset=conta_bancaria.objects.all(),
+        required=False,  # Vai ser obrigatório apenas para débito em conta
+        widget=forms.Select(attrs={'class': 'form-control'})  # Estilizado com Bootstrap
+    )
+
+class ReceitaForm(forms.ModelForm):
+
+    class Meta:
+        model = receita
+        fields = 'categoria', 'descricao', 'data_vencimento', 'valor', 'status'
+
+        label = {
+            'categoria': 'Categoria',
+            'descricao': 'Descrição',
+            'data_vencimento': 'Vencimento',
+            'valor': 'Valor',
+            'status': 'Status'
+        }
+
+        widgets = {
+            'categoria': forms.Select(attrs={
+                'class': 'form-select',
+                'id': 'categoria_despesa',
+                'placeholder': 'Selecione a categoria',
+                'required': 'true'
+            }),
+            'descricao': forms.TextInput(attrs={
+                'placeholder': 'Descrição...',
+                'required': 'true',
+                'maxlenght': '254'
+            }),
+            'data_vencimento': forms.DateInput(attrs={
+                'type': 'date',
+                'placeholder': 'dd/mm/YYYY',
+                'required': 'true'
+            }),
+            'valor': forms.NumberInput(attrs={
+                'placeholder': '0,00',
+                'required': 'true',
+                'maxlenght': '12'
+            }),
+            'status': forms.Select(attrs={
+                'class': 'form-select',
+                'id': 'status-despesa',
+                'required': 'true',
+            }) 
+        }
+
+class RecebimentoForm(forms.ModelForm):
+    class Meta:
+        model = recebimento
+        fields = 'metodo_recebimento', 'conta_bancaria_id'
+
+        label = {
+            'metodo_recebimento': 'Método de Recebimento',
+            'conta_bancaria_id': 'Conta Bancária'
+        }
+        widgets = {
+            'metodo_recebimento': forms.Select(attrs={
+                'class': 'form-select',
+                'placeholder': 'Selecione o Método de Recebimento',
                 'required': 'true'
             })
         }

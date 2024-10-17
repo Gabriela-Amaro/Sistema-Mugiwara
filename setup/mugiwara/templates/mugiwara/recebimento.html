@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Recebimento</title>
+{% endblock %} 
+
+{% block content %} 
+    <h1 class="text-center mt-3 mb-3">Receber Pagamento</h1>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+        
+            <div class="mb-3">
+                {{ form.non_field_errors }} <!-- Exibe erros gerais -->
+            </div>
+
+            <div class="mb-3">
+                Valor: {{ valor }}
+            </div>
+
+            <div class="mb-3" id='id_metodo_recebimento'>
+                {{ form.metodo_recebimento.label_tag }}
+                {{ form.metodo_recebimento }}
+                {{ form.metodo_recebimento.errors }}
+            </div>
+
+            <div class="mb-3" id="conta-bancaria-wrapper" style="display: none;">
+                {{ form.conta_bancaria_id.label_tag }}
+                {{ form.conta_bancaria_id }}
+                {{ form.conta_bancaria_id.errors }}
+            </div>
+        
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const metodoRecebimentoField = document.querySelector('#id_metodo_recebimento select'); // Corrigido para selecionar o <select>
+            const contaBancariaWrapper = document.getElementById('conta-bancaria-wrapper');
+
+            // Função para exibir ou ocultar o campo de conta bancária
+            function toggleContaBancaria() {
+                if (metodoRecebimentoField.value == 2) {
+                    contaBancariaWrapper.style.display = 'block';
+                } else {
+                    contaBancariaWrapper.style.display = 'none';
+                }
+            }
+
+            // Inicializar o campo na carga da página
+            toggleContaBancaria();
+
+            // Verifica quando o usuário altera a seleção do método de recebimento
+            metodoRecebimentoField.addEventListener('change', toggleContaBancaria);
+        });
+    </script>
+{% endblock %}

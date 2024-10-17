@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+   <title>Receitas</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<h1 class="text-center mt-3 mb-3">Receitas</h1>
+<button><a href="{% url 'receita' %}">Criar</a></button>
+<table class="table table-bordered">
+   <thead>
+     <tr>
+       <th scope="col">ID</th>
+       <th scope="col">Vencimento</th>
+       <th scope="col">Valor</th>
+       <th scope="col">Categoria</th>
+       <th scope="col">Descrição</th>
+       <th scope="col">Status</th>
+       <th scope="col">Data de criação</th>
+       <th scope="col">Actions</th>
+     </tr>
+   </thead>
+   <tbody>
+   {% for receita in receitas %}
+     <tr>
+       <td>{{receita.id}}</td>
+       <td>{{receita.data_vencimento}}</td>
+       <td>{{receita.valor}}</td>
+       <td>{{receita.get_categoria_display}}</td>
+       <td>{{receita.descricao}}</td>
+       <td>{{receita.get_status_display}}</td>
+       <td>{{receita.created_at}}</td>
+       <td>
+          {% if receita.status == 1 %}
+            <button class="btn"><a href="{% url 'recebimento' receita.id %}">Pagar</a></button>
+          {% endif %}
+           <button class="btn btn-danger"><a href="{% url 'delete_receita' receita.id %}">Delete</a></button>
+       </td>
+     </tr>
+   {% endfor %}
+   </tbody>
+ </table>
+</div>
+{% endblock %}

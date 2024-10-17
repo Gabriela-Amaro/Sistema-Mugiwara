@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+   <title>Recebimentos</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<h1 class="text-center mt-3 mb-3">Recebimentos</h1>
+<button><a href="{% url 'show_receita' %}">Criar</a></button>
+<table class="table table-bordered">
+   <thead>
+     <tr>
+       <th scope="col">ID</th>
+       <th scope="col">Método de Recebimento</th>
+       <th scope="col">Valor</th>
+       <th scope="col">Receita ID</th>
+       <th scope="col">Criado em</th>
+     </tr>
+   </thead>
+   <tbody>
+   {% for recebimento in recebimentos %}
+     <tr>
+       <td>{{recebimento.id}}</td>
+       <td>{{recebimento.get_metodo_recebimento_display}}</td>
+       <td>{{recebimento.valor_pago}}</td>
+       <td>{{recebimento.receita_id.id}}</td>
+       <td>{{recebimento.created_at}}</td>
+       {% comment %} <td>
+           <button class="btn btn-warning"><a href="{% url 'despesa' despesa.id %}">Update</a></button>&nbsp;&nbsp;
+           <button class="btn btn-danger"><a href="{% url 'delete_despesa' despesa.id %}">Delete</a></button>
+       </td> {% endcomment %}
+     </tr>
+   {% endfor %}
+   </tbody>
+ </table>
+</div>
+{% endblock %}

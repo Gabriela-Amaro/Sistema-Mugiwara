@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from django.views import View
-from .models import conta_bancaria, despesa, receita, fluxo_caixa, pagamento
-from .forms import UserCreationForm, ContaBancariaForm, DespesaForm, FluxoCaixaForm, PagamentosForm
+from .models import conta_bancaria, despesa, receita, fluxo_caixa, pagamento, receita, recebimento
+from .forms import UserCreationForm, ContaBancariaForm, DespesaForm, FluxoCaixaForm, PagamentoForm, ReceitaForm, RecebimentoForm
 from decimal import Decimal
 
 import datetime
@@ -201,8 +201,18 @@ def showFluxoCaixaOneView(request, f_id):
     data_fim = fluxo_caixas.data_final + datetime.timedelta(days=1)
     despesas = despesa.objects.filter(created_at__range=[data_inicio, data_fim])
     receitas = receita.objects.filter(created_at__range=[data_inicio, data_fim])
-    total_receitas = Decimal(receitas.aggregate(total_receitas=Sum('valor'))['total_receitas'])
-    total_despesas = Decimal(despesas.aggregate(total_despesas=Sum('valor'))['total_despesas']) 
+    total_receitas = receitas.aggregate(total_receitas=Sum('valor'))['total_receitas']
+    total_despesas = despesas.aggregate(total_despesas=Sum('valor'))['total_despesas']
+
+    if total_despesas:
+        total_despesas = Decimal(total_despesas)
+    else:
+        total_despesas = 0.00
+
+    if total_receitas:
+        total_receitas = Decimal(total_receitas)
+    else:
+        total_receitas = 0.00
 
     context = {
         'total_receitas': total_receitas,
@@ -228,9 +238,9 @@ def deleteFluxoCaixaView(request, f_id):
 def pagamentoView(request, d_id):
     despesas = despesa.objects.get(id=d_id)
     valor = despesas.valor
-    form = PagamentosForm
+    form = PagamentoForm
     if request.method == 'POST':
-        form = PagamentosForm(request.POST)
+        form = PagamentoForm(request.POST)
         if form.is_valid():
             if despesas.status == 1:
                 pagamento = form.save(commit=False)
@@ -255,7 +265,7 @@ def pagamentoView(request, d_id):
             else:
                 return redirect('show_despesa')
     else: 
-        form = PagamentosForm()
+        form = PagamentoForm()
     
     context = {
         'form': form,
@@ -273,17 +283,79 @@ def showPagamentoView(request):
     return render(request, 'mugiwara/show_pagamentos.html', context)
     
 # @login_required
-# def contasReceber(request):
-#     return render(request, "mugiwara/")
+def createReceitaView(request):
+    form = ReceitaForm
+    if request.method == 'POST':
+        form = ReceitaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('show_receita')
+    
+    context = {
+        'form': form
+    }
+
+    return render(request, 'mugiwara/receita.html', context)
 
 # @login_required
-# def fluxo_caixa(request):
-#     return render(request, "mugiwara/")
+def showReceitaView(request):
+    receitas = receita.objects.all()
+    context = {
+        'receitas': receitas
+    }
+    return render(request, 'mugiwara/show_receita.html', context)
 
 # @login_required
-# def relatorios(request):
-#     return render(request, "mugiwara/")
+def deleteReceitaView(request, r_id):
+
+    rec = receita.objects.get(id=r_id)
+    if request.method == 'POST':
+        rec.delete()
+        return redirect('show_receita')
+    context = {
+        'receita': rec
+    }
+    return render(request, 'mugiwara/delete_receita.html', context)
 
 # @login_required
-# def busca(request):
-#     return render(request, "mugiwara/")
+def recebimentoView(request, r_id):
+    receitas = receita.objects.get(id=r_id)
+    valor = receitas.valor
+    form = RecebimentoForm
+    if request.method == 'POST':
+        form = RecebimentoForm(request.POST)
+        if form.is_valid():
+            if receitas.status == 1:
+                recebimento = form.save(commit=False)
+                recebimento.valor_pago = receitas.valor
+                recebimento.receita_id = receitas
+                if recebimento.metodo_recebimento == 2 and not form.cleaned_data['conta_bancaria_id']:
+                    form.add_error('conta_bancaria_id', 'Selecione qual conta irá receber.')
+                else:
+                    if recebimento.metodo_recebimento == 2:
+                        conta = conta_bancaria.objects.get(id=recebimento.conta_bancaria_id.id)
+                        conta.saldo_atual += valor
+                        conta.save()
+                    receitas.status = 2
+                    receitas.save()
+                    recebimento.save()
+                    return redirect('show_recebimentos')
+            else:
+                return redirect('show_receita')
+    else: 
+        form = RecebimentoForm()
+    
+    context = {
+        'form': form,
+        'valor': valor
+    }
+    
+    return render(request, 'mugiwara/recebimento.html', context)
+
+# @login_required
+def showRecebimentoView(request):
+    recebimentos = recebimento.objects.all()
+    context = {
+        'recebimentos': recebimentos
+    }
+    return render(request, 'mugiwara/show_recebimentos.html', context)
