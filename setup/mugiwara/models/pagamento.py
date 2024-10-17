@@ -7,19 +7,19 @@ class pagamento(models.Model):
         DINHEIRO = 1, "Dinheiro"
         DEBITO  = 2, "Débito em conta"
 
-    valor_pago = models.DecimalField(decimal_places=2, max_digits=9)
+    valor_pago = models.DecimalField(decimal_places=2, max_digits=9, auto_created=True)
     metodo_pagamento = models.IntegerField(
         choices = metodos_pagamento,
         default = metodos_pagamento.DINHEIRO,
     )
-    created_at  =  models.DateTimeField(auto_now_add=True)
+    created_at  =  models.DateTimeField(auto_now_add=True, auto_created=True)
     despesa_id = models.ForeignKey(
         despesa,
         on_delete =  models.CASCADE
     )
     conta_bancaria_id  = models.ForeignKey(
         conta_bancaria,
-        on_delete = models.SET_NULL,
+        on_delete = models.CASCADE,
         null = True,
         blank = True
     )

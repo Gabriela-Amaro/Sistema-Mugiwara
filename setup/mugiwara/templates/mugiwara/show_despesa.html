@@ -32,7 +32,9 @@
        <td>{{despesa.get_status_display}}</td>
        <td>{{despesa.created_at}}</td>
        <td>
-           <button class="btn btn-warning"><a href="{% url 'despesa' despesa.id %}">Update</a></button>&nbsp;&nbsp;
+          {% if despesa.status == 1 %}
+            <button class="btn"><a href="{% url 'pagamento' despesa.id %}">Pagar</a></button>
+          {% endif %}
            <button class="btn btn-danger"><a href="{% url 'delete_despesa' despesa.id %}">Delete</a></button>
        </td>
      </tr>

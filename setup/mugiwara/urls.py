@@ -14,7 +14,6 @@ urlpatterns = [
     path('show_conta_bancaria/', views.showContaBancariaView, name='show_conta_bancaria'),
 
     path('despesa/', views.createDespesaView, name='despesa'),
-    path('despesa/<int:c_id>', views.updateDespesaView, name='despesa'),
     path('delete_despesa/<int:c_id>', views.deleteDespesaView, name='delete_despesa'),
     path('show_despesa/', views.showDespesaView, name='show_despesa'),
 
@@ -22,5 +21,10 @@ urlpatterns = [
     path('delete_fluxo_caixa/<int:f_id>', views.deleteFluxoCaixaView, name='delete_fluxo_caixa'),
     path('show_fluxo_caixa/', views.showFluxoCaixaView, name='show_fluxo_caixa'),
     path('show_fluxo_caixa_one/<int:f_id>', views.showFluxoCaixaOneView, name='show_fluxo_caixa_one'),
+
+    path('show_pagamentos', views.showPagamentoView, name='show_pagamentos'),
+    path('pagamento/<int:d_id>', views.pagamentoView, name='pagamento'),
+
+    
 
 ]

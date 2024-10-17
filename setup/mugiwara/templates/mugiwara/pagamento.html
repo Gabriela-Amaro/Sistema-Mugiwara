@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Pagamento</title>
+{% endblock %} 
+
+{% block content %} 
+    <h1 class="text-center mt-3 mb-3">Pagar Conta</h1>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+        
+            <div class="mb-3">
+                {{ form.non_field_errors }} <!-- Exibe erros gerais -->
+            </div>
+
+            <div class="mb-3">
+                Valor: {{ valor }}
+            </div>
+
+            <div class="mb-3" id='id_metodo_pagamento'>
+                {{ form.metodo_pagamento.label_tag }}
+                {{ form.metodo_pagamento }}
+                {{ form.metodo_pagamento.errors }}
+            </div>
+
+            <div class="mb-3" id="conta-bancaria-wrapper" style="display: none;">
+                {{ form.conta_bancaria_id.label_tag }}
+                {{ form.conta_bancaria_id }}
+                {{ form.conta_bancaria_id.errors }}
+            </div>
+        
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const metodoPagamentoField = document.querySelector('#id_metodo_pagamento select'); // Corrigido para selecionar o <select>
+            const contaBancariaWrapper = document.getElementById('conta-bancaria-wrapper');
+
+            // Função para exibir ou ocultar o campo de conta bancária
+            function toggleContaBancaria() {
+                if (metodoPagamentoField.value == 2) {
+                    contaBancariaWrapper.style.display = 'block';
+                } else {
+                    contaBancariaWrapper.style.display = 'none';
+                }
+            }
+
+            // Inicializar o campo na carga da página
+            toggleContaBancaria();
+
+            // Verifica quando o usuário altera a seleção do método de pagamento
+            metodoPagamentoField.addEventListener('change', toggleContaBancaria);
+        });
+    </script>
+{% endblock %}

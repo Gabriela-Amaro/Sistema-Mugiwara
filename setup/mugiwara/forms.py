@@ -1,5 +1,5 @@
 from django import forms
-from .models import conta_bancaria, despesa, fluxo_caixa
+from .models import conta_bancaria, despesa, fluxo_caixa, pagamento
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -107,7 +107,25 @@ class FluxoCaixaForm(forms.ModelForm):
             })
         }
 
+class PagamentosForm(forms.ModelForm):
+    class Meta:
+        model = pagamento
+        fields = 'metodo_pagamento', 'conta_bancaria_id'
 
-# class FluxoCaixaAtualForm(forms.Form):
-#     data_inicial = forms.DateField(initial=datetime.today)
-#     data_final = forms.DateField(initial=datetime.today)
+        label = {
+            'metodo_pagamento': 'Método de Pagamento',
+            'conta_bancaria_id': 'Conta Bancária'
+        }
+        widgets = {
+            'metodo_pagamento': forms.Select(attrs={
+                'class': 'form-select',
+                'placeholder': 'Selecione a Método de pagamento',
+                'required': 'true'
+            })
+        }
+
+    conta_bancaria_id = forms.ModelChoiceField(
+        queryset=conta_bancaria.objects.all(),
+        required=False,  # Vai ser obrigatório apenas para débito em conta
+        widget=forms.Select(attrs={'class': 'form-control'})  # Estilizado com Bootstrap
+    )

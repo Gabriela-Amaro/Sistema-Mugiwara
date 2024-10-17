@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from django.views import View
-from .models import conta_bancaria, despesa, receita, fluxo_caixa
-from .forms import UserCreationForm, ContaBancariaForm, DespesaForm, FluxoCaixaForm
+from .models import conta_bancaria, despesa, receita, fluxo_caixa, pagamento
+from .forms import UserCreationForm, ContaBancariaForm, DespesaForm, FluxoCaixaForm, PagamentosForm
 from decimal import Decimal
 
 import datetime
@@ -161,20 +161,6 @@ def showDespesaView(request):
     return render(request, 'mugiwara/show_despesa.html', context)
 
 # @login_required
-def updateDespesaView(request, c_id):
-    despesas = despesa.objects.get(id=c_id)
-    form = DespesaForm(instance=despesas)
-    if request.method == 'POST':
-        form = DespesaForm(request.POST, instance=despesas)
-        if form.is_valid():
-            form.save()
-            return redirect('show_despesa')
-    context = {
-        'form': form
-    }
-    return render(request, 'mugiwara/despesa.html', context) 
-
-# @login_required
 def deleteDespesaView(request, c_id):
     desp = despesa.objects.get(id=c_id)
     if request.method == 'POST':
@@ -191,7 +177,6 @@ def createFluxoCaixaView(request):
     if request.method == 'POST':
         form = FluxoCaixaForm(request.POST)
         if form.is_valid():
-            
             form.save()
             return redirect('show_fluxo_caixa')
     
@@ -209,6 +194,7 @@ def showFluxoCaixaView(request):
     }
     return render(request, 'mugiwara/show_fluxo_caixa.html', context)
 
+# @login_required
 def showFluxoCaixaOneView(request, f_id):
     fluxo_caixas = fluxo_caixa.objects.get(id=f_id)
     data_inicio = fluxo_caixas.data_inicial - datetime.timedelta(days=1)
@@ -227,6 +213,7 @@ def showFluxoCaixaOneView(request, f_id):
     }
     return render(request, 'mugiwara/show_fluxo_caixa_one.html', context)
 
+# @login_required
 def deleteFluxoCaixaView(request, f_id):
     fluxo = fluxo_caixa.objects.get(id=f_id)
     if request.method == 'POST':
@@ -237,7 +224,54 @@ def deleteFluxoCaixaView(request, f_id):
     }
     return render(request, 'mugiwara/delete_fluxo_caixa.html', context)
 
+# @login_required
+def pagamentoView(request, d_id):
+    despesas = despesa.objects.get(id=d_id)
+    valor = despesas.valor
+    form = PagamentosForm
+    if request.method == 'POST':
+        form = PagamentosForm(request.POST)
+        if form.is_valid():
+            if despesas.status == 1:
+                pagamento = form.save(commit=False)
+                pagamento.valor_pago = despesas.valor
+                pagamento.despesa_id = despesas
+                if pagamento.metodo_pagamento == 2 and not form.cleaned_data['conta_bancaria_id']:
+                    form.add_error('conta_bancaria_id', 'Conta bancária é obrigatória para débito em conta.')
+                else:
+                    if pagamento.metodo_pagamento == 2:
+                        conta = conta_bancaria.objects.get(id=pagamento.conta_bancaria_id.id)
+                        if conta.saldo_atual < valor:
+                            form.add_error('conta_bancaria_id', 'Saldo Insuficiente')
+                            context = {'form': form, 'valor': valor}
+                            return render(request, 'mugiwara/pagamento.html', context)
+                        else:
+                            conta.saldo_atual -= valor
+                            conta.save()
+                    despesas.status = 2
+                    despesas.save()
+                    pagamento.save()
+                    return redirect('show_pagamentos')
+            else:
+                return redirect('show_despesa')
+    else: 
+        form = PagamentosForm()
+    
+    context = {
+        'form': form,
+        'valor': valor
+    }
+    
+    return render(request, 'mugiwara/pagamento.html', context)
 
+# @login_required
+def showPagamentoView(request):
+    pagamentos = pagamento.objects.all()
+    context = {
+        'pagamentos': pagamentos
+    }
+    return render(request, 'mugiwara/show_pagamentos.html', context)
+    
 # @login_required
 # def contasReceber(request):
 #     return render(request, "mugiwara/")
