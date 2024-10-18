@@ -58,15 +58,6 @@ erDiagram
         decimal projecao_saidas
     }
     
-    RELATORIOS {
-        int id PK
-        int tipo
-        date periodo_inicio
-        date periodo_fim
-        blob arquivo_pdf
-        datetime created_at
-    }
-    
     CONTAS_BANCARIAS {
         int id PK
         string nome_banco
