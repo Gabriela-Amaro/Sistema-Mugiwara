@@ -51,11 +51,9 @@ erDiagram
     
     FLUXO_CAIXA {
         int id PK
-        date data
-        decimal saldo_inicial
-        decimal saldo_final
-        decimal projecao_entradas
-        decimal projecao_saidas
+        date data_inicial
+        date data_final
+        date created_at
     }
     
     CONTAS_BANCARIAS {
