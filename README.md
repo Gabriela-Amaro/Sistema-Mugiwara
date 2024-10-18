@@ -10,40 +10,44 @@ Versão do Python: 3.12.6
 
 #### Clonando o Projeto
 ```bash
-  git clone git@github.com:Gabriela-Amaro/Sistema-Mugiwara.git
+git clone git@github.com:Gabriela-Amaro/Sistema-Mugiwara.git
 ```
 
+#### Criando o ambiente virtal
+```bash
+python3 -m venv .venv
+```
 #### Ativando o ambiente virtual
 ```bash
-  source .venv/bin/activate
+source .venv/bin/activate
 ```
 
 #### Instalando o pip
 ```bash
-  sudo apt install python3-pip
+sudo apt install python3-pip
 ```
 
 #### Entrando na pasta do projeto
 ```bash
-  cd setup/
+cd setup/
 ```
 
 #### Instalando as dependências
 ```bash
-  pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 #### Inserindo os dados de teste no banco
 ```bash
-  python3 manage.py dumpdata mugiwara --indent 2 > fixtures/data.json
+python3 manage.py dumpdata mugiwara --indent 2 > fixtures/data.json
 ```
 
 #### Rodando o servidor
 ```bash
-  python3 manage.py runserver
+python3 manage.py runserver
 ```
 
 #### Abrindo o projeto no navegador
 ```bash
-  http://localhost:8000/
+http://localhost:8000/
 ```
