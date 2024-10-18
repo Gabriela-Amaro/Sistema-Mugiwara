@@ -8,6 +8,11 @@ Sistema de controle financeiro desenvolvido com Django.
 
 Versão do Python: 3.12.6
 
+#### Clonando o Projeto
+```bash
+  git clone git@github.com:Gabriela-Amaro/Sistema-Mugiwara.git
+```
+
 #### Ativando o ambiente virtual
 ```bash
   source .venv/bin/activate
