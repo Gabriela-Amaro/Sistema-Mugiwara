@@ -56,7 +56,7 @@ def userLogout(request):
     logout(request)  # Faz o logout do usuário
     return redirect('login')  # Redireciona para a página de login
 
-# @login_required
+@login_required
 def createContaBancariaView(request):
     form = ContaBancariaForm
     if request.method == "POST":
@@ -69,7 +69,7 @@ def createContaBancariaView(request):
     }
     return render(request, 'mugiwara/conta_bancaria.html', context)
 
-# @login_required
+@login_required
 def showContaBancariaView(request):
     form = SearchContaBancariaForm(request.GET or None)    
     contas = conta_bancaria.objects.all()
@@ -90,7 +90,7 @@ def showContaBancariaView(request):
     }
     return render(request, 'mugiwara/show_conta_bancaria.html', context)
 
-# @login_required
+@login_required
 def updateContaBancariaView(request, c_id):
     conta = conta_bancaria.objects.get(id=c_id)
     form = ContaBancariaForm(instance=conta)
@@ -104,7 +104,7 @@ def updateContaBancariaView(request, c_id):
     }
     return render(request, 'mugiwara/conta_bancaria.html', context) 
 
-# @login_required
+@login_required
 def deleteContaBancariaView(request, c_id):
     conta = conta_bancaria.objects.get(id=c_id)
     if request.method == 'POST':
@@ -115,7 +115,7 @@ def deleteContaBancariaView(request, c_id):
     }
     return render(request, 'mugiwara/delete_conta_bancaria.html', context)
 
-# @login_required
+@login_required
 def createDespesaView(request):
     form = DespesaForm
     if request.method == 'POST':
@@ -130,7 +130,7 @@ def createDespesaView(request):
 
     return render(request, 'mugiwara/despesa.html', context)
 
-# @login_required
+@login_required
 def showDespesaView(request):
     form = SearchDespesaForm(request.GET or None)
     despesas = despesa.objects.all()
@@ -171,7 +171,7 @@ def showDespesaView(request):
     }
     return render(request, 'mugiwara/show_despesa.html', context)
 
-# @login_required
+@login_required
 def deleteDespesaView(request, c_id):
     desp = despesa.objects.get(id=c_id)
     if request.method == 'POST':
@@ -182,7 +182,7 @@ def deleteDespesaView(request, c_id):
     }
     return render(request, 'mugiwara/delete_despesa.html', context)
 
-# @login_required
+@login_required
 def createFluxoCaixaView(request):
     form = FluxoCaixaForm
     if request.method == 'POST':
@@ -197,7 +197,7 @@ def createFluxoCaixaView(request):
 
     return render(request, 'mugiwara/fluxo_caixa.html', context)
 
-# @login_required
+@login_required
 def showFluxoCaixaView(request):
     fluxo_caixas = fluxo_caixa.objects.all()
     context = {
@@ -205,7 +205,7 @@ def showFluxoCaixaView(request):
     }
     return render(request, 'mugiwara/show_fluxo_caixa.html', context)
 
-# @login_required
+@login_required
 def showFluxoCaixaOneView(request, f_id):
     fluxo_caixas = fluxo_caixa.objects.get(id=f_id)
     data_inicio = fluxo_caixas.data_inicial - datetime.timedelta(days=1)
@@ -234,7 +234,7 @@ def showFluxoCaixaOneView(request, f_id):
     }
     return render(request, 'mugiwara/show_fluxo_caixa_one.html', context)
 
-# @login_required
+@login_required
 def deleteFluxoCaixaView(request, f_id):
     fluxo = fluxo_caixa.objects.get(id=f_id)
     if request.method == 'POST':
@@ -245,7 +245,7 @@ def deleteFluxoCaixaView(request, f_id):
     }
     return render(request, 'mugiwara/delete_fluxo_caixa.html', context)
 
-# @login_required
+@login_required
 def pagamentoView(request, d_id):
     despesas = despesa.objects.get(id=d_id)
     valor = despesas.valor
@@ -285,7 +285,7 @@ def pagamentoView(request, d_id):
     
     return render(request, 'mugiwara/pagamento.html', context)
 
-# @login_required
+@login_required
 def showPagamentoView(request):
     form = SearchPagamentosForm(request.GET or None)
     pagamentos = pagamento.objects.all()
@@ -310,7 +310,7 @@ def showPagamentoView(request):
     }
     return render(request, 'mugiwara/show_pagamentos.html', context)
     
-# @login_required
+@login_required
 def createReceitaView(request):
     form = ReceitaForm
     if request.method == 'POST':
@@ -325,7 +325,7 @@ def createReceitaView(request):
 
     return render(request, 'mugiwara/receita.html', context)
 
-# @login_required
+@login_required
 def showReceitaView(request):
     form = SearchReceitasForm(request.GET or None)
     receitas = receita.objects.all()
@@ -365,7 +365,7 @@ def showReceitaView(request):
     }
     return render(request, 'mugiwara/show_receita.html', context)
 
-# @login_required
+@login_required
 def deleteReceitaView(request, r_id):
 
     rec = receita.objects.get(id=r_id)
@@ -377,7 +377,7 @@ def deleteReceitaView(request, r_id):
     }
     return render(request, 'mugiwara/delete_receita.html', context)
 
-# @login_required
+@login_required
 def recebimentoView(request, r_id):
     receitas = receita.objects.get(id=r_id)
     valor = receitas.valor
@@ -412,7 +412,7 @@ def recebimentoView(request, r_id):
     
     return render(request, 'mugiwara/recebimento.html', context)
 
-# @login_required
+@login_required
 def showRecebimentoView(request):
     form = SearchRecebimentosForm(request.GET or None)
     recebimentos = recebimento.objects.all()
