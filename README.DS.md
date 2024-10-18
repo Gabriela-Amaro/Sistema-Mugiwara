@@ -117,8 +117,7 @@ sequenceDiagram
 
     Funcionario ->> Sistema: Solicita "Análise de Fluxo de Caixa" (período)
     Sistema ->> BD: Recupera dados de fluxo de caixa do período
-    BD -->> Sistema: Dados de fluxo de caixa recuperados
-    Sistema: Analisa e calcula fluxo de caixa
+    BD -->> Sistema: Analisa e calcula fluxo de caixa
     Sistema -->> Funcionario: Exibe análise de fluxo de caixa detalhada
 ```
 
