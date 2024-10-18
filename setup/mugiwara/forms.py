@@ -7,7 +7,6 @@ from .models.recebimento import metodos_recebimento
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
 
 class SignupForm(UserCreationForm):
     class Meta:
