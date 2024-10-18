@@ -35,12 +35,12 @@ Versão do Python: 3.12.6
 
 #### Inserindo os dados de teste no banco
 ```bash
-  python manage.py dumpdata mugiwara --indent 2 > fixtures/data.json
+  python3 manage.py dumpdata mugiwara --indent 2 > fixtures/data.json
 ```
 
 #### Rodando o servidor
 ```bash
-  python manage.py runserver
+  python3 manage.py runserver
 ```
 
 #### Abrindo o projeto no navegador
