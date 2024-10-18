@@ -6,19 +6,17 @@
 
 ### Contas a Pagar
 
-1. CRUD de Fornecedores: Permitir a inclusão, edição e exclusão de fornecedores.
-2. CRUD de Despesas: Registrar despesas com detalhes como data, valor, categoria e fornecedor.
-3. Pagamento de Contas: Facilitar a execução de pagamentos, possibilitando integração com sistemas bancários para conciliação automática.
+1. CRUD de Despesas: Registrar despesas com detalhes como data, valor, categoria.
+2. Pagamento de Contas: Facilitar a execução de pagamentos.
 
 ### Contas a Receber
 
-4. CRUD de Clientes: Incluir, editar e excluir informações de clientes.
-5. CRUD de Receitas: Registrar receitas com detalhes como data, valor, categoria e cliente.
-6. Registro de Pagamentos: Permitir o registro e conciliação de pagamentos recebidos, com integração para facilitar a conciliação bancária.
+3. CRUD de Receitas: Registrar receitas com detalhes como data, valor, categoria.
+4. Registro de Recebimentos e Pagamentos: Facilitar o registro e as transações no sistema.
 
 ### Fluxo de Caixa
 
-7. Visão Geral do Fluxo de Caixa: Exibir um resumo das entradas e saídas de caixa.
+5. Visão Geral do Fluxo de Caixa: Exibir um resumo das entradas e saídas de caixa.
 
 ## Requisitos Não Funcionais
 
