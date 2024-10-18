@@ -1,6 +1,6 @@
+Django==5.1.1
 asgiref==3.8.1
 crispy-bootstrap5==2024.10
-Django==5.1.1
 django-crispy-forms==2.3
 django-seed==0.3.1
 Faker==30.6.0
