@@ -23,15 +23,14 @@ Versão do Python: 3.12.6
   sudo apt install python3-pip
 ```
 
+#### Entrando na pasta do projeto
+```bash
+  cd setup/
+```
 
 #### Instalando as dependências
 ```bash
   pip install -r requirements.txt
-```
-
-#### Entrando na pasta do projeto
-```bash
-  cd setup/
 ```
 
 #### Inserindo os dados de teste no banco
