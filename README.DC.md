@@ -56,21 +56,9 @@
 
     class FluxoCaixa {
         -int id
-        -date data
-        -decimal saldo_inicial
-        -decimal saldo_final
-        -decimal projecao_entradas
-        -decimal projecao_saidas
-        +__str__() string
-    }
-
-    class Relatorio {
-        -int id
-        -int tipo
-        -date periodo_inicio
-        -date periodo_fim
-        -blob arquivo_pdf
-        -datetime created_at
+        -date data_inicial
+        -date data_final
+        -date created_at
         +__str__() string
     }
 
