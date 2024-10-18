@@ -8,27 +8,38 @@ Sistema de controle financeiro desenvolvido com Django.
 
 Versão do Python: 3.12.6
 
-#### Ativar o ambiente virtual
+#### Ativando o ambiente virtual
 ```bash
   source .venv/bin/activate
 ```
 
-#### Entrar na pasta do projeto
+#### Instalando o pip
+```bash
+  sudo apt install python3-pip
+```
+
+
+#### Instalando as dependências
+```bash
+  pip install -r requirements.txt
+```
+
+#### Entrando na pasta do projeto
 ```bash
   cd setup/
 ```
 
-#### Inserir os dados de teste no banco
+#### Inserindo os dados de teste no banco
 ```bash
   python manage.py dumpdata mugiwara --indent 2 > fixtures/data.json
 ```
 
-#### Rodar o servidor
+#### Rodando o servidor
 ```bash
   python manage.py runserver
 ```
 
-#### Abrir o projeto no navegador
+#### Abrindo o projeto no navegador
 ```bash
   http://localhost:8000/
 ```
